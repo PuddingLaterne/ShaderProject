@@ -79,7 +79,7 @@ float fbm(vec3 p)
 
 float density(vec3 p)
 {
-	p.y += 0.6;
+	p.y += 0.7;
 	p.y += cos(p.x*1.4) * 0.2;
 	p.y += cos(p.z)*0.1;
 	p *= 1.2;
@@ -249,7 +249,7 @@ void main()
 	vec2 uv = gl_FragCoord.xy / res;
 	uv = (uv-vec2(0.5))*2.0;
     uv.y += 0.5;
-    uv *= 1.3;
+    uv *= 1.2;
 			
 	ray r;
 	r.o = vec3(0.0);
@@ -262,8 +262,8 @@ void main()
 	vec3 bg = mix(vec3(0.0, 0.1, 0.1),vec3(0.1, 0.3, 0.5), min(1.0, gradient*2.0));
 	bg = mix(bg, vec3(0.6, 0.9, 1.0), (max(0.0, gradient - 0.5)) * 2.0);
 	bg += vec3(0.8) * moon;
-	bg += vec3(0.4) * stars(uv,5.0,0.01);
-	bg += vec3(0.4) * stars(uv, 100.0, 0.04);
+	bg += vec3(0.2) * stars(uv,5.0,0.01);
+	bg += vec3(0.3) * stars(uv, 100.0, 0.04);
 	bg += vec3(0.6) * ghosts(uv) * (uv.y+1.0)/2.0;
 	
 	vec4 sum = vec4(0);	

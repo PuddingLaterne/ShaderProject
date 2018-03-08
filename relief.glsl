@@ -168,7 +168,7 @@ vec2 rotate(vec2 p, float angle)
 	return mat * p;
 }
 
-float dancers(vec2 p, float t, out vec3 c)
+float dancers(vec2 p, float t, inout vec3 c)
 {		
 	float cutoff = 1.0 - step(1.0, abs(p.y));
 	float f = ((p.y+0.6)/1.2)*sin(t); 
@@ -244,7 +244,7 @@ float ornament(vec2 p)
 	return 1.0 - d;
 }
 
-float border(vec2 p, float t, out vec3 c)
+float border(vec2 p, float t, inout vec3 c)
 {
 	p.y = abs(p.y);
 	p.y -= 1.4;	
@@ -260,7 +260,7 @@ float border(vec2 p, float t, out vec3 c)
 	p.y = abs(p.y);
 	float lines = 1.0 - smoothstep(0.02,0.1, abs(p.y - 0.5));
 	float border = 1.0 - smoothstep(0.1, 0.6, p.y);
-	
+
 	return ornament*0.1 + lines * 0.2 + points * 0.1 + border * 0.9;
 }
 
@@ -277,7 +277,7 @@ float lamps(vec2 p, float t)
 	return smoothstep(0.0, 1.0, length(p));
 }
 
-float stones(vec2 p, float t, out vec3 c)
+float stones(vec2 p, float t, inout vec3 c)
 {
 	vec2 op = p;
 	float n = texture(texLastFrame1, op*0.6).x;
@@ -304,7 +304,7 @@ float stones(vec2 p, float t, out vec3 c)
 	return h*0.9;
 }
 
-float vines(vec2 p, float t, out vec3 c)
+float vines(vec2 p, float t, inout vec3 c)
 {
 	vec2 bS = texture(texLastFrame1, p*0.4).xy;
 	vec2 bL = texture(texLastFrame1, p*0.08).xy;
@@ -317,7 +317,7 @@ float vines(vec2 p, float t, out vec3 c)
 	return h*0.1;
 }
 
-float heightField(vec2 p, float t, out vec3 c)
+float heightField(vec2 p, float t, inout vec3 c)
 {
 	float h = stones(p,t, c);
 	h += border(p, t, c);
@@ -437,8 +437,8 @@ struct plane
 	vec3 n;
 	float d;
 };
-const plane frontPlane = plane(vec3(0.0, 0.0, -1.0), 0.0);	
-const plane backPlane = plane(vec3(0.0, 0.0, -1.0), thickness);	
+plane frontPlane = plane(vec3(0.0, 0.0, -1.0), 0.0);	
+plane backPlane = plane(vec3(0.0, 0.0, -1.0), thickness);	
 
 float intersectPlane(ray r, plane pl)
 {
@@ -480,7 +480,7 @@ vec3 corridor(ray r, vec2 uv)
 			p += r.d * 0.01;
 		}
 		float i = intensity(p, h, time);
-		color = mix(color * shadow, color * light, i);		
+		color = mix(color * shadow, color * light, i);	
 	}
 	float fog = map01(drawDist/10.0, drawDist, back);
 	return mix(color, bg, max(fog,vignette(uv)));

@@ -8,7 +8,7 @@ const float INFINITY = 1000000000.0;
 
 const int MOTIONBLURSAMPLES = 4;
 const float MOTIONBLURDELTA = 0.01;
-const int DOFSAMPLES = 4;
+const int DOFSAMPLES = 6;
 const float DOFDELTA = 0.01;
 
 const float FOCUS = 4.0;
