@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zenseless.ShaderDebugging</name>
+    </assembly>
+    <members>
+        <member name="T:Zenseless.ShaderDebugging.FormShaderExceptionFacade">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderExceptionFacade.ShowModal(Zenseless.HLGL.ShaderException)">
+            <summary>
+            Shows the modal.
+            </summary>
+            <param name="e">The e.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderExceptionFacade.Close">
+            <summary>
+            Closes this instance.
+            </summary>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.FormShaderExceptionFacade.form">
+            <summary>
+            The form
+            </summary>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.FormShaderExceptionFacade.closeOnFileChange">
+            <summary>
+            The close on file change
+            </summary>
+        </member>
+        <member name="T:Zenseless.ShaderDebugging.FormShaderException">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Windows.Forms.Form" />
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.ShaderDebugging.FormShaderException"/> class.
+            </summary>
+        </member>
+        <member name="P:Zenseless.ShaderDebugging.FormShaderException.Errors">
+            <summary>
+            Gets the errors.
+            </summary>
+            <value>
+            The errors.
+            </value>
+        </member>
+        <member name="P:Zenseless.ShaderDebugging.FormShaderException.ShaderSourceCode">
+            <summary>
+            Gets or sets the shader source code.
+            </summary>
+            <value>
+            The shader source code.
+            </value>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.Select(System.Int32)">
+            <summary>
+            Selects the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="P:Zenseless.ShaderDebugging.FormShaderException.FontSize">
+            <summary>
+            Gets or sets the size of the font.
+            </summary>
+            <value>
+            The size of the font.
+            </value>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.FormShaderException.errors">
+            <summary>
+            The errors
+            </summary>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.OnMouseWheel(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Called when [mouse wheel].
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.FormShaderError_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handles the KeyDown event of the FormShaderError control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.KeyEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.ListBox_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Handles the SelectedIndexChanged event of the listBox control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.FormShaderException_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            Handles the FormClosing event of the FormShaderException control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.FormClosingEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.FormShaderException_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the FormShaderException control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.FormShaderException_Shown(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Shown event of the FormShaderException control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.FormShaderException.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormShaderException.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Zenseless.ShaderDebugging.FormTools">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormTools.IsPartlyOnScreen(System.Drawing.Rectangle)">
+            <summary>
+            Determines whether [is partly on screen] [the specified bounds].
+            </summary>
+            <param name="bounds">The bounds.</param>
+            <returns>
+              <c>true</c> if [is partly on screen] [the specified bounds]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.FormTools.IsPointOnScreen(System.Drawing.Point)">
+            <summary>
+            Determines whether [is point on screen] [the specified point].
+            </summary>
+            <param name="point">The point.</param>
+            <returns>
+              <c>true</c> if [is point on screen] [the specified point]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Zenseless.ShaderDebugging.RegistryLoader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoader.LoadLayout(OpenTK.GameWindow)">
+            <summary>
+            Loads the layout.
+            </summary>
+            <param name="window">The window.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoader.SaveLayout(OpenTK.GameWindow)">
+            <summary>
+            Saves the layout.
+            </summary>
+            <param name="window">The window.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoader.LoadValue(System.String,System.String,System.Object)">
+            <summary>
+            Loads the value.
+            </summary>
+            <param name="keyName">Name of the key.</param>
+            <param name="name">The name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoader.SaveValue(System.String,System.String,System.Object)">
+            <summary>
+            Saves the value.
+            </summary>
+            <param name="keyName">Name of the key.</param>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:Zenseless.ShaderDebugging.RegistryLoaderForm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoaderForm.GetAppKey">
+            <summary>
+            Gets the application key.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoaderForm.LoadLayout(System.Windows.Forms.Form)">
+            <summary>
+            Loads the layout.
+            </summary>
+            <param name="form">The form.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoaderForm.SaveLayout(System.Windows.Forms.Form)">
+            <summary>
+            Saves the layout.
+            </summary>
+            <param name="form">The form.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoaderForm.LoadValue(System.String,System.String,System.Object)">
+            <summary>
+            Loads a value from the registry key of the application.
+            </summary>
+            <param name="keyName">Name of the registry key.</param>
+            <param name="name">Name of the registry entry.</param>
+            <param name="defaultValue">The default value of the entry.</param>
+            <returns>value as <see cref="T:System.Object"/></returns>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.RegistryLoaderForm.SaveValue(System.String,System.String,System.Object)">
+            <summary>
+            Saves the value to the registry key of the application.
+            </summary>
+            <param name="keyName">Name of the registry key.</param>
+            <param name="name">Name of the registry entry.</param>
+            <param name="value">The value to be stored.</param>
+        </member>
+        <member name="T:Zenseless.ShaderDebugging.ShaderFileDebugger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.ShaderFileDebugger.#ctor(System.String,System.String,System.Byte[],System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.ShaderDebugging.ShaderFileDebugger"/> class.
+            </summary>
+            <param name="vertexFile">The vertex file.</param>
+            <param name="fragmentFile">The fragment file.</param>
+            <param name="vertexShader">The vertex shader.</param>
+            <param name="fragmentShader">The fragment shader.</param>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.ShaderFileDebugger.CheckForShaderChange">
+            <summary>
+            Checks for shader change.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.ShaderDebugging.ShaderFileDebugger.ShowDebugDialog(Zenseless.HLGL.ShaderException)">
+            <summary>
+            Shows the debug dialog.
+            </summary>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="P:Zenseless.ShaderDebugging.ShaderFileDebugger.Shader">
+            <summary>
+            Gets the shader.
+            </summary>
+            <value>
+            The shader.
+            </value>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.ShaderFileDebugger.shader">
+            <summary>
+            The shader
+            </summary>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.ShaderFileDebugger.shaderWatcherVertex">
+            <summary>
+            The shader watcher vertex
+            </summary>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.ShaderFileDebugger.shaderWatcherFragment">
+            <summary>
+            The shader watcher fragment
+            </summary>
+        </member>
+        <member name="F:Zenseless.ShaderDebugging.ShaderFileDebugger.form">
+            <summary>
+            The form
+            </summary>
+        </member>
+    </members>
+</doc>

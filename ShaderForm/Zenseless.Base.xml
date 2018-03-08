@@ -1,0 +1,388 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zenseless.Base</name>
+    </assembly>
+    <members>
+        <member name="T:Zenseless.Base.Disposable">
+            <summary>
+            Implements the default disposing behavior as recommended by Microsoft.
+            If you have resources that need disposing, subclass this class.
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.Disposable.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method. 
+            Implementers should dispose all their resources her.
+            </summary>
+        </member>
+        <member name="P:Zenseless.Base.Disposable.Disposed">
+            <summary>
+            Dispose status of the instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.Disposable.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:Zenseless.Base.FileWatcher">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.FileWatcher.#ctor(System.String,System.ComponentModel.ISynchronizeInvoke)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Base.FileWatcher"/> class.
+            </summary>
+            <param name="filePath">The file path.</param>
+            <param name="syncObject">The synchronize object.</param>
+            <exception cref="T:System.IO.FileNotFoundException">File does not exist</exception>
+        </member>
+        <member name="E:Zenseless.Base.FileWatcher.Changed">
+            <summary>
+            Occurs when [changed].
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.FileWatcher.FileNotification(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Files the notification.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.IO.FileSystemEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="P:Zenseless.Base.FileWatcher.Dirty">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Zenseless.Base.FileWatcher"/> is dirty.
+            </summary>
+            <value>
+              <c>true</c> if dirty; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Base.FileWatcher.FullPath">
+            <summary>
+            Gets the full path.
+            </summary>
+            <value>
+            The full path.
+            </value>
+        </member>
+        <member name="F:Zenseless.Base.FileWatcher.watcher">
+            <summary>
+            The watcher
+            </summary>
+        </member>
+        <member name="T:Zenseless.Base.GameTime">
+            <summary>
+            Intended as a source for time.
+            Can do frames-per-second counting.
+            Uses a <see cref="T:System.Diagnostics.Stopwatch" />
+            </summary>
+        </member>
+        <member name="P:Zenseless.Base.GameTime.DeltaTime">
+            <summary>
+            Gets the time since the last frame.
+            </summary>
+            <value>
+            The delta time in seconds.
+            </value>
+        </member>
+        <member name="P:Zenseless.Base.GameTime.FPS">
+            <summary>
+            Gets the current frames-per-second.
+            </summary>
+            <value>
+            Frames-per-second as a float.
+            </value>
+        </member>
+        <member name="P:Zenseless.Base.GameTime.AbsoluteTime">
+            <summary>
+            Gets the absolute time since start in seconds.
+            </summary>
+            <value>
+            The absolute time in seconds.
+            </value>
+        </member>
+        <member name="P:Zenseless.Base.GameTime.AbsoluteMilliseconds">
+            <summary>
+            Gets the elapsed time in milliseconds.
+            </summary>
+            <value>
+            The time in milliseconds.
+            </value>
+        </member>
+        <member name="M:Zenseless.Base.GameTime.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Base.GameTime"/> class.
+            This will start the time counting
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.GameTime.NewFrame">
+            <summary>
+            Start a new frame. You have to call this method exactly once per frame for correct FPS counting and delta time.
+            </summary>
+        </member>
+        <member name="T:Zenseless.Base.ImageListTools">
+            <summary>
+            Contains tools for saving image lists. 
+            Intended to be used for recording of videos. Is used in ExampleWindow.
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.ImageListTools.SaveToDefaultDir(System.Collections.Generic.IEnumerable{System.Drawing.Bitmap})">
+            <summary>
+            Save a list of images to the directory given by PathTools.GetCurrentProcessOutputDir(true) 
+            </summary>
+            <param name="images">Images to save</param>
+        </member>
+        <member name="M:Zenseless.Base.ImageListTools.Save(System.Collections.Generic.IEnumerable{System.Drawing.Bitmap},System.String)">
+            <summary>
+            Save a list of images to a given directory.
+            </summary>
+            <param name="images">Images to save</param>
+            <param name="directory">Directory to save to</param>
+        </member>
+        <member name="M:Zenseless.Base.ImageListTools.ToBuffer(System.Drawing.Bitmap)">
+            <summary>
+            Converts a <see cref="T:System.Drawing.Bitmap"/> into a byte buffer.
+            </summary>
+            <param name="bitmap">The bitmap to convert.</param>
+            <returns><see cref="T:System.Byte"/>[]</returns>
+        </member>
+        <member name="T:Zenseless.Base.ITime">
+            <summary>
+            Interface for querying absolute and last frame time
+            results are always in seconds
+            </summary>
+        </member>
+        <member name="P:Zenseless.Base.ITime.DeltaTime">
+            <summary>
+            Gets the time since the last frame.
+            </summary>
+            <value>
+            The delta time in seconds.
+            </value>
+        </member>
+        <member name="P:Zenseless.Base.ITime.AbsoluteTime">
+            <summary>
+            Gets the absolute time since start in seconds.
+            </summary>
+            <value>
+            The absolute time in seconds.
+            </value>
+        </member>
+        <member name="T:Zenseless.Base.ITimedUpdate">
+            <summary>
+            Interface for updates at a specified absolute time.
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.ITimedUpdate.Update(System.Single)">
+            <summary>
+            Updates at the specified absolute time.
+            </summary>
+            <param name="absoluteTime">The absolute time in seconds.</param>
+        </member>
+        <member name="T:Zenseless.Base.PathTools">
+            <summary>
+            Contains helper functions for file paths
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.PathTools.GetCurrentProcessPath">
+            <summary>
+            Returns the full path of the main module of the current process.
+            </summary>
+            <returns>Full path of the main module of the current process.</returns>
+        </member>
+        <member name="M:Zenseless.Base.PathTools.GetCurrentProcessDir">
+            <summary>
+            Returns the directory of the main module of the current process.
+            </summary>
+            <returns>Directory of the main module of the current process.</returns>
+        </member>
+        <member name="M:Zenseless.Base.PathTools.GetCurrentProcessOutputDir(System.String)">
+            <summary>
+            Returns the output directory for the current process:
+            a sub-directory of the directory the executable resides in 
+            and with the name of the executable and an appended time code.
+            </summary>
+            <param name="timeCodeFormat">string format for DateTime</param>
+            <returns>Output directory</returns>
+        </member>
+        <member name="M:Zenseless.Base.PathTools.GetFullPath(System.String)">
+            <summary>
+            Returns the absolute path for the specified path string by using <see cref="M:System.IO.Path.GetFullPath(System.String)"/>.
+            If an exception is thrown by <see cref="M:System.IO.Path.GetFullPath(System.String)"/> the input parameter is returned.
+            </summary>
+            <param name="fileName">The file or directory for which to obtain absolute path information.</param>
+            <returns>The fully qualified location of path, such as "C:\MyFile.txt".</returns>
+        </member>
+        <member name="M:Zenseless.Base.PathTools.GetRelativePath(System.String,System.String)">
+            <summary>
+            Returns the relative path. if no relative path is valid, the absolut path is returned.
+            </summary>
+            <param name="fromPath">the path the result should be relative to</param>
+            <param name="toPath">the path to be converted into relative form</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.Base.PathTools.GetSourceFilePath(System.String)">
+            <summary>
+            Returns the full path of the source file that contains the caller. This is the file path at the time of compile.
+            </summary>
+            <param name="doNotAssignCallerFilePath">Dummy default parameter. Needed for internal attribute evaluation. Do not assign.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.Base.PathTools.IncludeTrailingPathDelimiter(System.String)">
+            <summary>
+            IncludeTrailingPathDelimiter ensures that a path name ends with a trailing path delimiter ('\" on Windows, '/' on Linux). 
+            If S already ends with a trailing delimiter character, it is returned unchanged; otherwise path with appended delimiter character is returned. 
+            </summary>
+            <param name="path">Input path</param>
+            <returns>Input path with trailing path delimiter</returns>
+        </member>
+        <member name="T:Zenseless.Base.PeriodicUpdate">
+            <summary>
+            Invokes a registered callback in regular intervals in the main thread 
+            (important if you do for instance OpenGL stuff)
+            </summary>
+            <seealso cref="T:Zenseless.Base.ITimedUpdate" />
+        </member>
+        <member name="P:Zenseless.Base.PeriodicUpdate.PeriodElapsedCount">
+            <summary>
+            Gets how often the period has elapsed.
+            </summary>
+            <value>
+            The period elapsed count.
+            </value>
+        </member>
+        <member name="P:Zenseless.Base.PeriodicUpdate.PeriodRelativeTime">
+            <summary>
+            Gets the period relative time. The time that has elapsed since the current period has started.
+            </summary>
+            <value>
+            The time that has elapsed since the current period has started.
+            </value>
+        </member>
+        <member name="P:Zenseless.Base.PeriodicUpdate.Enabled">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Zenseless.Base.PeriodicUpdate"/> is enabled.
+            </summary>
+            <value>
+              <c>true</c> if enabled - callback and internal time counting active from this point onward. 
+              otherwise, <c>false - Stops invoking of the callback and internal time counting.</c>.
+            </value>
+        </member>
+        <member name="T:Zenseless.Base.PeriodicUpdate.PeriodElapsedHandler">
+            <summary>
+            Event handler delegate type declaration
+            </summary>
+            <param name="sender">The <see cref="T:Zenseless.Base.PeriodicUpdate"/> instance that invokes the callback.</param>
+            <param name="absoluteTime">The absolute time at invoking.</param>
+        </member>
+        <member name="E:Zenseless.Base.PeriodicUpdate.PeriodElapsed">
+            <summary>
+            A registered callback is called each time the Interval period has elapsed.
+            </summary>
+        </member>
+        <member name="P:Zenseless.Base.PeriodicUpdate.Period">
+            <summary>
+            Gets or sets the period of time.
+            </summary>
+            <value>
+            The period of time.
+            </value>
+        </member>
+        <member name="M:Zenseless.Base.PeriodicUpdate.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Base.PeriodicUpdate"/> class.
+            </summary>
+            <param name="period">The regular time interval in which <see cref="E:Zenseless.Base.PeriodicUpdate.PeriodElapsed"/> will be called.</param>
+        </member>
+        <member name="M:Zenseless.Base.PeriodicUpdate.Update(System.Single)">
+            <summary>
+            Updates the specified absolute time. 
+            This method is responsible for calling the <see cref="E:Zenseless.Base.PeriodicUpdate.PeriodElapsed"/> callback.
+            This method has to be called at least once per frame to have frame exact callback evaluation.
+            </summary>
+            <param name="absoluteTime">The current absolute time.</param>
+        </member>
+        <member name="F:Zenseless.Base.PeriodicUpdate.absoluteStartTime">
+            <summary>
+            The absolute start time in seconds
+            </summary>
+        </member>
+        <member name="T:Zenseless.Base.Serialization">
+            <summary>
+            Contains class instance serialization/deserialization methods. 
+            Can be used for persisting class instances to disc and reading them back to memory.
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.FromXMLFile(System.String,System.Type)">
+            <summary>
+            Deserializes from an XML file into a new class instance of a given type.
+            </summary>
+            <param name="fileName">The file name from which the serialized instance will be restored from.</param>
+            <param name="type">The type of the class that will be deserialized.</param>
+            <returns>Deserialized class instance</returns>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.FromXmlString(System.String,System.Type)">
+            <summary>
+            Deserializes from an XML string into a new class instance of a given type.
+            </summary>
+            <param name="xmlString">XML string from which to deserialize.</param>
+            <param name="type">The type of the class that will be deserialized.</param>
+            <returns>Deserialized class instance</returns>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.FromBinFile(System.String)">
+            <summary>
+            Deserializes an new obj instance from a binary file.
+            </summary>
+            <param name="fileName">The file name from which the serialized instance will be restored from.</param>
+            <returns>Deserialized class instance</returns>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.FromBinStream(System.IO.Stream)">
+            <summary>
+            Deserializes an new obj instance from a binary stream.
+            </summary>
+            <param name="binStream">The binary stream from which the serialized instance will be restored from.</param>
+            <returns>Deserialized class instance</returns>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.ToXMLFile(System.Object,System.String)">
+            <summary>
+            Serializes the given class instance into a XML format file.
+            </summary>
+            <param name="serializable">The class instance to be serialized.</param>
+            <param name="fileName">The file name the serialized instance will be stored to.</param>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.ToXmlString(System.Object)">
+            <summary>
+            Serializes the given class instance into a XML string.
+            </summary>
+            <param name="serializable">The class instance to be serialized.</param>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.ToBinFile(System.Object,System.String)">
+            <summary>
+            Serializes the given class instance into a binary file.
+            </summary>
+            <param name="serializable">The class instance to be serialized.</param>
+            <param name="fileName">The file name the serialized instance will be stored to.</param>
+        </member>
+        <member name="M:Zenseless.Base.Serialization.ToBinStream(System.Object,System.IO.Stream)">
+            <summary>
+            Serializes the given class instance into the given stream.
+            </summary>
+            <param name="serializable">The class instance to be serialized.</param>
+            <param name="output">Stream to serialize to</param>
+        </member>
+        <member name="T:Zenseless.Base.Converter">
+            <summary>
+            Contains data type converter methods
+            </summary>
+        </member>
+        <member name="M:Zenseless.Base.Converter.BytesToString(System.Byte[])">
+            <summary>
+            Converts a given byte array assuming UTF8 encoding into a string
+            </summary>
+            <param name="input">Byte array in UTF8 encoding</param>
+            <returns>String of the byte array</returns>
+        </member>
+    </members>
+</doc>

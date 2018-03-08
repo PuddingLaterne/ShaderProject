@@ -1,0 +1,1665 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zenseless.OpenGL</name>
+    </assembly>
+    <members>
+        <member name="T:Zenseless.OpenGL.AnimationTextures">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IAnimation" />
+        </member>
+        <member name="M:Zenseless.OpenGL.AnimationTextures.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.AnimationTextures"/> class.
+            </summary>
+            <param name="animationLength">Length of the animation.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.AnimationTextures.AddFrame(Zenseless.HLGL.ITexture)">
+            <summary>
+            Adds the frame.
+            </summary>
+            <param name="textureFrame">The texture frame.</param>
+        </member>
+        <member name="P:Zenseless.OpenGL.AnimationTextures.AnimationLength">
+            <summary>
+            Gets or sets the length of the animation.
+            </summary>
+            <value>
+            The length of the animation.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.AnimationTextures.Textures">
+            <summary>
+            Gets the textures.
+            </summary>
+            <value>
+            The textures.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.AnimationTextures.CalcAnimationFrame(System.Single)">
+            <summary>
+            Calculates the frame id (the current frame of the animation) out of the given time
+            </summary>
+            <param name="time"></param>
+            <returns>id of the current frame of the animation</returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.AnimationTextures.Draw(Zenseless.Geometry.IReadOnlyBox2D,System.Single)">
+            <summary>
+            draws a GL quad, textured with an animation.
+            </summary>
+            <param name="rectangle">coordinates of the GL quad</param>
+            <param name="totalSeconds">animation position in seconds</param>
+        </member>
+        <member name="T:Zenseless.OpenGL.ColorSystems">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.ColorSystems.Hsb2rgb(System.Single,System.Single,System.Single)">
+            <summary>
+            Converts hsb (Hue, Saturation and Brightness) color value into rgb
+            </summary>
+            <param name="h">Hue [0..1]</param>
+            <param name="s">Saturation [0..1]</param>
+            <param name="b">Brightness [0..1]</param>
+            <returns>
+            rgb color
+            </returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.ColorSystems.ToSystemColor(System.Numerics.Vector3)">
+            <summary>
+            To the color of the system.
+            </summary>
+            <param name="color">The color.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.ColorSystems.ToVector3(System.Drawing.Color)">
+            <summary>
+            To the vector3.
+            </summary>
+            <param name="color">The color.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Zenseless.OpenGL.BufferObject">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+        </member>
+        <member name="M:Zenseless.OpenGL.BufferObject.#ctor(OpenTK.Graphics.OpenGL4.BufferTarget)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.BufferObject"/> class.
+            </summary>
+            <param name="bufferTarget">The buffer target.</param>
+        </member>
+        <member name="P:Zenseless.OpenGL.BufferObject.BufferTarget">
+            <summary>
+            Gets the buffer target.
+            </summary>
+            <value>
+            The buffer target.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.BufferObject.Type">
+            <summary>
+            Gets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.BufferObject.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.BufferObject.ActivateBind(System.Int32)">
+            <summary>
+            Activates the bind.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.BufferObject.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.BufferObject.Set``1(``0[],OpenTK.Graphics.OpenGL4.BufferUsageHint)">
+            <summary>
+            Sets the specified data.
+            </summary>
+            <typeparam name="DATA_ELEMENT_TYPE">The type of the ata element type.</typeparam>
+            <param name="data">The data.</param>
+            <param name="usageHint">The usage hint.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.BufferObject.Set``1(``0,OpenTK.Graphics.OpenGL4.BufferUsageHint)">
+            <summary>
+            Sets the specified data.
+            </summary>
+            <typeparam name="DATA_TYPE">The type of the ata type.</typeparam>
+            <param name="data">The data.</param>
+            <param name="usageHint">The usage hint.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.BufferObject.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.INativeWindowExtensions">
+            <summary>
+            Extension method class for OpenTK.INativeWindow
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.INativeWindowExtensions.AddMayaCameraEvents(OpenTK.INativeWindow,Zenseless.Geometry.CameraOrbit)">
+            <summary>
+            Add Maya like camera handling. 
+            </summary>
+            <param name="window">window that receives input system events</param>
+            <param name="camera">orbit camera events should be routed too.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.INativeWindowExtensions.DefaultExampleWindowKeyEvents(System.Object,OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>
+            Default key bindings: ESCAPE for closing; F11 for toggling full-screen
+            </summary>
+            <param name="sender">window that receives input system events. Should be a <see cref="T:OpenTK.INativeWindow"/>.</param>
+            <param name="e">The <see cref="T:OpenTK.Input.KeyboardKeyEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.INativeWindowExtensions.ConvertWindowPixelCoords(OpenTK.INativeWindow,System.Int32,System.Int32)">
+            <summary>
+            Converts pixel based coordinates to coordinates in range [-1,1]²
+            </summary>
+            <param name="window">window for which to convert the coordinates</param>
+            <param name="pixelX">Window pixel x-coordinate</param>
+            <param name="pixelY">Window pixel y-coordinate</param>
+            <returns>Coordinates in range [-1,1]²</returns>
+        </member>
+        <member name="T:Zenseless.OpenGL.RenderContextGL">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IRenderContext" />
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderContextGL.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.RenderContextGL"/> class.
+            </summary>
+        </member>
+        <member name="P:Zenseless.OpenGL.RenderContextGL.StateManager">
+            <summary>
+            Gets the state manager.
+            </summary>
+            <value>
+            The state manager.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderContextGL.ClearColor(System.Numerics.Vector4)">
+            <summary>
+            Clears the color.
+            </summary>
+            <param name="c">The c.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderContextGL.DrawPoints(System.Int32)">
+            <summary>
+            Draws the points.
+            </summary>
+            <param name="count">The count.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderContextGL.GetFrameBuffer">
+            <summary>
+            Gets the frame buffer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderContextGL.CreateDrawConfiguration">
+            <summary>
+            Creates the draw configuration.
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderContextGL.CreateRenderSurface(System.Int32,System.Int32,System.Boolean,System.Byte,System.Boolean)">
+            <summary>
+            Creates the render surface.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="hasDepthBuffer">if set to <c>true</c> [has depth buffer].</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderContextGL.CreateShader">
+            <summary>
+            Creates the shader.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Zenseless.OpenGL.FBOwithDepth">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.OpenGL.FBO" />
+        </member>
+        <member name="M:Zenseless.OpenGL.FBOwithDepth.#ctor(Zenseless.HLGL.ITexture2D)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.FBOwithDepth"/> class.
+            </summary>
+            <param name="texture">The texture.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.FBOwithDepth.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.FBOwithDepth.depth">
+            <summary>
+            The depth
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.DrawTools">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.DrawTools.DrawTexturedRect(Zenseless.Geometry.IReadOnlyBox2D,Zenseless.Geometry.IReadOnlyBox2D)">
+            <summary>
+            Draws a textured rectangle.
+            </summary>
+            <param name="rect">The rectangle coordinates.</param>
+            <param name="texCoords">The rectangle texture coordinates.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.DrawTools.WriteErrors">
+            <summary>
+            Writes OpenGL errors to the console.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.DrawTools.ToOpenTK(System.Numerics.Vector3)">
+            <summary>
+            To the open tk.
+            </summary>
+            <param name="v">The v.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.DrawTools.ToOpenTK(System.Numerics.Matrix4x4)">
+            <summary>
+            To the open tk.
+            </summary>
+            <param name="m">The m.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Zenseless.OpenGL.RenderSurfaceGL">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+            <seealso cref="T:Zenseless.HLGL.IRenderSurface" />
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderSurfaceGL.#ctor(System.Int32,System.Int32,System.Boolean,System.Byte,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.RenderSurfaceGL"/> class.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="hasDepthBuffer">if set to <c>true</c> [has depth buffer].</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderSurfaceGL.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.RenderSurfaceGL"/> class.
+            </summary>
+            <param name="hasDepthBuffer">if set to <c>true</c> [has depth buffer].</param>
+        </member>
+        <member name="P:Zenseless.OpenGL.RenderSurfaceGL.Texture">
+            <summary>
+            Gets the texture.
+            </summary>
+            <value>
+            The texture.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderSurfaceGL.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderSurfaceGL.Draw(Zenseless.HLGL.IDrawConfiguration)">
+            <summary>
+            Draws the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderSurfaceGL.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.RenderSurfaceGL.fbo">
+            <summary>
+            The fbo
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.RenderSurfaceGL.actionClear">
+            <summary>
+            The action clear
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.RenderSurfaceGL.context">
+            <summary>
+            The context
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.QueryObject">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+        </member>
+        <member name="M:Zenseless.OpenGL.QueryObject.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.QueryObject"/> class.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.QueryObject.Activate(OpenTK.Graphics.OpenGL4.QueryTarget)">
+            <summary>
+            Activates the specified target.
+            </summary>
+            <param name="target">The target.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.QueryObject.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="P:Zenseless.OpenGL.QueryObject.IsFinished">
+            <summary>
+            Gets a value indicating whether this instance is finished.
+            </summary>
+            <value>
+              <c>true</c> if this instance is finished; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.QueryObject.Result">
+            <summary>
+            Gets the result.
+            </summary>
+            <value>
+            The result.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.QueryObject.ResultLong">
+            <summary>
+            Gets the result long.
+            </summary>
+            <value>
+            The result long.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.QueryObject.Target">
+            <summary>
+            Gets the target.
+            </summary>
+            <value>
+            The target.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.QueryObject.TryGetResult(System.Int32@)">
+            <summary>
+            Tries the get result.
+            </summary>
+            <param name="result">The result.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.QueryObject.TryGetResult(System.Int64@)">
+            <summary>
+            Tries the get result.
+            </summary>
+            <param name="result">The result.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.QueryObject.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.QueryObject.id">
+            <summary>
+            The identifier
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.FrameBuffer">
+            <summary>
+            Contains methods for accessing the frame buffer 
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.FrameBuffer.RotateFlip(System.Drawing.Bitmap)">
+            <summary>
+            Do the necessary rotate and flip for GL buffer to <seealso cref="T:System.Drawing.Bitmap"/> conversion.
+            </summary>
+            <param name="bitmap">The bitmap that will be rotated and flipped</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.FrameBuffer.ToBitmap(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Saves a rectangular area of the current frame buffer into a Bitmap
+            </summary>
+            <param name="x">start position in x-direction</param>
+            <param name="y">start position in y-direction</param>
+            <param name="width">size in x-direction</param>
+            <param name="height">size in y-direction</param>
+            <param name="rotateFlip">If <code>true</code> image will be rotated and flipped, which is correct,
+            but this is a time-consuming operation and should be switched off for fast screen capturing.
+            <code>true</code> by default.</param>
+            <returns>Bitmap</returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.FrameBuffer.ToBitmap(System.Boolean)">
+            <summary>
+            Saves the contents of the current frame buffer into a Bitmap
+            </summary>
+            <param name="rotateFlip">If <code>true</code> image will be rotated and flipped, which is correct,
+            but this is a time-consuming operation and should be switched off for fast screen capturing.
+            <code>true</code> by default.</param>
+            <returns>Bitmap</returns>
+        </member>
+        <member name="T:Zenseless.OpenGL.RenderBuffer">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+        </member>
+        <member name="P:Zenseless.OpenGL.RenderBuffer.Handle">
+            <summary>
+            Gets the handle.
+            </summary>
+            <value>
+            The handle.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderBuffer.#ctor(OpenTK.Graphics.OpenGL4.RenderbufferStorage,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.RenderBuffer"/> class.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderBuffer.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderBuffer.Attach(OpenTK.Graphics.OpenGL4.FramebufferAttachment)">
+            <summary>
+            Attaches the specified attachment point.
+            </summary>
+            <param name="attachmentPoint">The attachment point.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderBuffer.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.RenderBuffer.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.SpriteSheetAnimation">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IAnimation" />
+        </member>
+        <member name="M:Zenseless.OpenGL.SpriteSheetAnimation.#ctor(Zenseless.HLGL.SpriteSheet,System.UInt32,System.UInt32,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.SpriteSheetAnimation"/> class.
+            </summary>
+            <param name="spriteSheet">The sprite sheet.</param>
+            <param name="fromID">From identifier.</param>
+            <param name="toID">To identifier.</param>
+            <param name="animationLength">Length of the animation.</param>
+        </member>
+        <member name="P:Zenseless.OpenGL.SpriteSheetAnimation.AnimationLength">
+            <summary>
+            Gets or sets the length of the animation.
+            </summary>
+            <value>
+            The length of the animation.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.SpriteSheetAnimation.FromID">
+            <summary>
+            Gets or sets from identifier.
+            </summary>
+            <value>
+            From identifier.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.SpriteSheetAnimation.SpriteSheet">
+            <summary>
+            Gets the sprite sheet.
+            </summary>
+            <value>
+            The sprite sheet.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.SpriteSheetAnimation.ToID">
+            <summary>
+            Gets or sets to identifier.
+            </summary>
+            <value>
+            To identifier.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.SpriteSheetAnimation.CalcAnimationSpriteID(System.UInt32,System.UInt32,System.Single,System.Single)">
+            <summary>
+            Calculates the sprite id (the current frame of the animation) out of the given time
+            </summary>
+            <param name="fromID">sprite id for first animation frame</param>
+            <param name="toID">sprite id for last animation frame</param>
+            <param name="animationLength">total animation time in seconds</param>
+            <param name="time">current time</param>
+            <returns>
+            sprite id of the current frame of the animation
+            </returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.SpriteSheetAnimation.Draw(Zenseless.Geometry.IReadOnlyBox2D,System.Single)">
+            <summary>
+            draws a GL quad, textured with an animation.
+            </summary>
+            <param name="rectangle">coordinates ofthe GL quad</param>
+            <param name="totalSeconds">animation position in seconds</param>
+        </member>
+        <member name="T:Zenseless.OpenGL.FBOException">
+            <summary>
+            Implements an FBO exception.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Zenseless.OpenGL.FBOException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.FBOException" /> class.
+            </summary>
+            <param name="msg">The error msg.</param>
+        </member>
+        <member name="T:Zenseless.OpenGL.FBO">
+            <summary>
+            Frame buffer object class that handles rendering to texture(s).
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+        </member>
+        <member name="M:Zenseless.OpenGL.FBO.#ctor(Zenseless.HLGL.ITexture2D)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.FBO"/> class.
+            </summary>
+            <param name="texture">The texture to draw to. The FBO will try to dispose the texture when the FBO is disposed.</param>
+            <exception cref="T:Zenseless.OpenGL.FBOException">
+            Given texture is null or texture dimensions do not match primary texture
+            </exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.FBO.Attach(Zenseless.HLGL.ITexture2D)">
+            <summary>
+            Attaches the specified texture. The FBO will try to dispose the texture when the FBO is disposed.
+            </summary>
+            <param name="texture">The texture to attach.</param>
+            <exception cref="T:Zenseless.OpenGL.FBOException">
+            Given texture is null or texture dimensions do not match primary texture
+            </exception>
+        </member>
+        <member name="P:Zenseless.OpenGL.FBO.IsActive">
+            <summary>
+            Gets a value indicating whether this instance is active.
+            </summary>
+            <value>
+              <c>true</c> if this instance is active; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.FBO.Texture">
+            <summary>
+            Gets the texture.
+            </summary>
+            <value>
+            The texture.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.FBO.Textures">
+            <summary>
+            Gets the list of attached textures.
+            </summary>
+            <value>
+            The list of textures.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.FBO.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.FBO.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.FBO.m_FBOHandle">
+            <summary>
+            The m fbo handle
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.FBO.lastFBO">
+            <summary>
+            The last fbo
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.FBO.currentFrameBufferHandle">
+            <summary>
+            The current frame buffer handle
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.FBO.GetStatusMessage">
+            <summary>
+            Gets the status message.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.FBO.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.Shader">
+            <summary>
+            Shader class
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+            <seealso cref="T:Zenseless.HLGL.IShader" />
+            todo: rename to ShaderProgram and create Shader classes to compile individual (fragment, vertex, ...) shaders
+        </member>
+        <member name="P:Zenseless.OpenGL.Shader.IsLinked">
+            <summary>
+            Gets a value indicating whether this instance is linked.
+            </summary>
+            <value>
+            <c>true</c> if this instance is linked; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.Shader.LastLog">
+            <summary>
+            Gets the last log.
+            </summary>
+            <value>
+            The last log.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.Shader.ProgramID">
+            <summary>
+            Gets the program identifier.
+            </summary>
+            <value>
+            The program identifier.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.Shader" /> class.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.Compile(System.String,Zenseless.HLGL.ShaderType)">
+            <summary>
+            Compiles the specified s shader.
+            </summary>
+            <param name="sShader">The s shader.</param>
+            <param name="type">The type.</param>
+            <exception cref="T:Zenseless.HLGL.ShaderCompileException">
+            Could not create " + type.ToString() + " object
+            or
+            Error compiling  " + type.ToString()
+            </exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.Activate">
+            <summary>
+            Begins this shader use.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.Deactivate">
+            <summary>
+            Ends this shader use.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.GetResourceLocation(Zenseless.HLGL.ShaderResourceType,System.String)">
+            <summary>
+            Gets the resource location.
+            </summary>
+            <param name="resourceType">Type of the resource.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Unknown ShaderResourceType</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.Link">
+            <summary>
+            Links all compiled shaders to a shader program and deletes them.
+            </summary>
+            <exception cref="T:Zenseless.HLGL.ShaderException">
+            Unknown Link error!
+            or
+            Error linking shader
+            </exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.Shader.shaderIDs">
+            <summary>
+            The shader ids used for linking
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.ConvertType(Zenseless.HLGL.ShaderType)">
+            <summary>
+            Converts the shader type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Unknown Shader type</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.GetResourceIndex(System.String,OpenTK.Graphics.OpenGL4.ProgramInterface)">
+            <summary>
+            Gets the index of the resource.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.Shader.RemoveShaders">
+            <summary>
+            Removes the shaders.
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.ShaderLoader">
+            <summary>
+            Contains methods for loading Glsl Shader programs from files, streams or strings
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.ShaderLoader.ExceptionDataFileName">
+            <summary>
+            The exception data key string name that contains the file name
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.ShaderLoader.FromStrings(System.String,System.String)">
+            <summary>
+            Compiles and links vertex and fragment shaders from strings.
+            </summary>
+            <param name="sVertexShd_">The vertex shader source code string.</param>
+            <param name="sFragmentShd_">The fragment shader source code string.</param>
+            <returns>
+            a new instance
+            </returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.ShaderLoader.FromStrings(Zenseless.HLGL.IShader,System.String,System.String)">
+            <summary>
+            Compiles and links vertex and fragment shaders from strings.
+            </summary>
+            <param name="shader">The empty shader to which the two shader sources are linked to.</param>
+            <param name="sVertexShd_">The vertex shader source code string.</param>
+            <param name="sFragmentShd_">The fragment shader source code string.</param>
+            <returns>The shader log, Empty if no errors.</returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.ShaderLoader.FromFiles(System.String,System.String)">
+            <summary>
+            Compiles and links vertex and fragment shaders from files.
+            </summary>
+            <param name="sVertexShdFile_">The s vertex SHD file_.</param>
+            <param name="sFragmentShdFile_">The s fragment SHD file_.</param>
+            <returns>
+            a new instance
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">FromFiles called with unexpected shader type</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.ShaderLoader.ShaderStringFromFileWithIncludes(System.String,System.Boolean)">
+            <summary>
+            Reads the contents of a file into a string
+            </summary>
+            <param name="shaderFile">path to the shader file</param>
+            <param name="testCompileInclude">should includes be compiled (for error checking) before being pasted into the including shader</param>
+            <returns>
+            string with contents of shaderFile
+            </returns>
+            <exception cref="T:System.IO.FileNotFoundException">
+            Could not find shader file '" + shaderFile + "'
+            or
+            Could not find include-file '" + sIncludeFileName + "' for shader '" + shaderFile + "'.
+            </exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.ShaderLoader.ExtractFileName(Zenseless.HLGL.ShaderException)">
+            <summary>
+            Extracts the name of the file.
+            </summary>
+            <param name="e">The e.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Zenseless.OpenGL.SpriteSheetRenderer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.SpriteSheetRenderer.#ctor(Zenseless.HLGL.ITexture,Zenseless.HLGL.SpriteSheet)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.SpriteSheetRenderer"/> class.
+            </summary>
+            <param name="texture">The texture.</param>
+            <param name="spriteSheet">The sprite sheet.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.SpriteSheetRenderer.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.SpriteSheetRenderer.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.SpriteSheetRenderer.Draw(Zenseless.Geometry.IReadOnlyBox2D,System.UInt32)">
+            <summary>
+            Draws the specified rectangle.
+            </summary>
+            <param name="rectangle">The rectangle.</param>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="P:Zenseless.OpenGL.SpriteSheetRenderer.SpriteSheet">
+            <summary>
+            Gets the sprite sheet.
+            </summary>
+            <value>
+            The sprite sheet.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.SpriteSheetRenderer.Texture">
+            <summary>
+            Gets the texture.
+            </summary>
+            <value>
+            The texture.
+            </value>
+        </member>
+        <member name="T:Zenseless.OpenGL.StateActiveFboGL">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IState" />
+        </member>
+        <member name="P:Zenseless.OpenGL.StateActiveFboGL.Fbo">
+            <summary>
+            Gets or sets the fbo.
+            </summary>
+            <value>
+            The fbo.
+            </value>
+        </member>
+        <member name="F:Zenseless.OpenGL.StateActiveFboGL.fbo">
+            <summary>
+            The fbo
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.StateActiveShaderGL">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IState" />
+        </member>
+        <member name="P:Zenseless.OpenGL.StateActiveShaderGL.Shader">
+            <summary>
+            Gets or sets the shader.
+            </summary>
+            <value>
+            The shader.
+            </value>
+        </member>
+        <member name="F:Zenseless.OpenGL.StateActiveShaderGL.shader">
+            <summary>
+            The shader
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.StateBoolGL">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateBool" />
+        </member>
+        <member name="M:Zenseless.OpenGL.StateBoolGL.#ctor(OpenTK.Graphics.OpenGL4.EnableCap)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.StateBoolGL"/> class.
+            </summary>
+            <param name="capability">The capability.</param>
+        </member>
+        <member name="P:Zenseless.OpenGL.StateBoolGL.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Zenseless.HLGL.IStateBool" /> is enabled.
+            </summary>
+            <value>
+            <c>true</c> if enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Zenseless.OpenGL.StateBoolGL.enabled">
+            <summary>
+            The enabled
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.StateBoolGL.capability">
+            <summary>
+            The capability
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.StateBoolGL.UpdateGL">
+            <summary>
+            Updates the gl.
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.Texture2dGL">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.OpenGL.Texture" />
+            <seealso cref="T:Zenseless.HLGL.ITexture2D" />
+        </member>
+        <member name="P:Zenseless.OpenGL.Texture2dGL.Width">
+            <summary>
+            Gets the width.
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.Texture2dGL.Height">
+            <summary>
+            Gets the height.
+            </summary>
+            <value>
+            The height.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture2dGL.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.Texture2dGL"/> class.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture2dGL.Create(System.Int32,System.Int32,System.Byte,System.Boolean)">
+            <summary>
+            Creates the specified width.
+            </summary>
+            <param name="width">The texture width in pixel.</param>
+            <param name="height">The texture height in pixel.</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture2dGL.Create(System.Int32,System.Int32,OpenTK.Graphics.OpenGL4.PixelInternalFormat,OpenTK.Graphics.OpenGL4.PixelFormat,OpenTK.Graphics.OpenGL4.PixelType)">
+            <summary>
+            Creates the specified width.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="internalFormat">The internal format.</param>
+            <param name="inputPixelFormat">The input pixel format.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture2dGL.LoadPixels(System.IntPtr,System.Int32,System.Int32,OpenTK.Graphics.OpenGL4.PixelInternalFormat,OpenTK.Graphics.OpenGL4.PixelFormat,OpenTK.Graphics.OpenGL4.PixelType)">
+            <summary>
+            Loads the pixels.
+            </summary>
+            <param name="pixels">The pixels.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="internalFormat">The internal format.</param>
+            <param name="inputPixelFormat">The input pixel format.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture2dGL.LoadPixels(System.IntPtr,System.Int32,System.Int32,System.Byte,System.Boolean)">
+            <summary>
+            Loads the pixels.
+            </summary>
+            <param name="pixels">The pixels.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+        </member>
+        <member name="T:Zenseless.OpenGL.TextureArrayGL">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.OpenGL.Texture" />
+        </member>
+        <member name="P:Zenseless.OpenGL.TextureArrayGL.Width">
+            <summary>
+            Gets the width.
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.TextureArrayGL.Height">
+            <summary>
+            Gets the height.
+            </summary>
+            <value>
+            The height.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.TextureArrayGL.Elements">
+            <summary>
+            Gets the elements.
+            </summary>
+            <value>
+            The elements.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureArrayGL.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.TextureArrayGL"/> class.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureArrayGL.Load(System.IntPtr,System.Int32,System.Byte,System.Boolean)">
+            <summary>
+            Loads the specified pixels.
+            </summary>
+            <param name="pixels">The pixels.</param>
+            <param name="element">The element.</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureArrayGL.SetFormat(System.Int32,System.Int32,System.Int32,System.Byte,System.Boolean)">
+            <summary>
+            Sets the format.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="elements">The elements.</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+        </member>
+        <member name="T:Zenseless.OpenGL.TextureFont">
+            <summary>
+            allows to print text were the individual characters come all from a single texture
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureFont.#ctor(Zenseless.HLGL.ITexture,System.UInt32,System.Byte,System.Single,System.Single,System.Single)">
+            <summary>
+            Create a new font that can be printed in OpenGL
+            </summary>
+            <param name="texture">texture containing a equally spaced grid of characters</param>
+            <param name="charactersPerLine">number of characters per grid row</param>
+            <param name="firstAsciiCode">ascii code of upper left most character in the grid</param>
+            <param name="characterBoundingBoxWidth">bounding box width of each character cell, allows to zoom in/out of each character</param>
+            <param name="characterBoundingBoxHeight">bounding box height of each character cell, allows to zoom in/out of each character</param>
+            <param name="characterSpacing">how much to move to the right after drawing a single character</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureFont.ConvertString2Ascii(System.String)">
+            <summary>
+            Converts the string2 ASCII.
+            </summary>
+            <param name="text">The text.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureFont.Print(System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            Prints the specified x position.
+            </summary>
+            <param name="xPos">The x position.</param>
+            <param name="yPos">The y position.</param>
+            <param name="zPos">The z position.</param>
+            <param name="size">The size.</param>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureFont.Width(System.String,System.Single)">
+            <summary>
+            Widthes the specified text.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="size">The size.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Zenseless.OpenGL.TextureFont.baseList">
+            <summary>
+            The base list
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.TextureFont.texFont">
+            <summary>
+            The tex font
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.TextureFont.characterSpacing">
+            <summary>
+            The character spacing
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureFont.PrintRawQuads(System.Byte[])">
+            <summary>
+            Prints the raw quads.
+            </summary>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureFont.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.Texture">
+            <summary>
+            Gl Texture class that allows loading from a file.
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+            <seealso cref="T:Zenseless.HLGL.ITexture" />
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.#ctor(OpenTK.Graphics.OpenGL4.TextureTarget)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.Texture" /> class.
+            </summary>
+            <param name="target">The target.</param>
+        </member>
+        <member name="P:Zenseless.OpenGL.Texture.Target">
+            <summary>
+            Gets the target.
+            </summary>
+            <value>
+            The target.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.Texture.ID">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.Texture.Filter">
+            <summary>
+            Gets or sets the filter.
+            </summary>
+            <value>
+            The filter.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.Texture.WrapFunction">
+            <summary>
+            Gets or sets the wrap function.
+            </summary>
+            <value>
+            The wrap function.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.Convert(System.Byte,System.Boolean)">
+            <summary>
+            Converts the specified components.
+            </summary>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Invalid Format only 1-4 components allowed</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.Convert(System.Byte)">
+            <summary>
+            Converts the specified components.
+            </summary>
+            <param name="components">The components.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Invalid Format only 1-4 components allowed</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.Texture.m_uTextureID">
+            <summary>
+            The m u texture identifier
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.Texture.filterMode">
+            <summary>
+            The filter mode
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.Texture.wrapFunction">
+            <summary>
+            The wrap function
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.ConvertWrapFunction(Zenseless.HLGL.TextureWrapFunction)">
+            <summary>
+            Converts the wrap function.
+            </summary>
+            <param name="wrapFunc">The wrap function.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Unknown wrap function</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.SetFilter(Zenseless.HLGL.TextureFilterMode)">
+            <summary>
+            Sets the filter.
+            </summary>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.Texture.SetWrapMode(Zenseless.HLGL.TextureWrapFunction)">
+            <summary>
+            Sets the wrap mode.
+            </summary>
+            <param name="wrapFunc">The wrap function.</param>
+        </member>
+        <member name="T:Zenseless.OpenGL.TextureLoader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.FromArray``1(``0[0:,0:],OpenTK.Graphics.OpenGL4.PixelInternalFormat,OpenTK.Graphics.OpenGL4.PixelFormat,OpenTK.Graphics.OpenGL4.PixelType)">
+            <summary>
+            Froms the array.
+            </summary>
+            <typeparam name="TYPE">The type of the ype.</typeparam>
+            <param name="data">The data.</param>
+            <param name="internalFormat">The internal format.</param>
+            <param name="format">The format.</param>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.FromBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Froms the bitmap.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.FromStream(System.IO.Stream)">
+            <summary>
+            Froms the stream.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.FromFile(System.String)">
+            <summary>
+            Froms the file.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.IO.FileLoadException"></exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.SaveToFile(Zenseless.HLGL.ITexture2D,System.String,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+            Saves to file.
+            </summary>
+            <param name="texture">The texture.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="format">The format.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.SaveToBitmap(Zenseless.HLGL.ITexture2D,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+            Saves to bitmap.
+            </summary>
+            <param name="texture">The texture.</param>
+            <param name="format">The format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.ToBuffer(Zenseless.HLGL.ITexture2D,System.Numerics.Vector4[]@)">
+            <summary>
+            Saves a texture to a buffer.
+            </summary>
+            <param name="texture">The texture to save.</param>
+            <param name="buffer">The buffer to write to</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.SelectPixelFormat(System.Drawing.Imaging.PixelFormat)">
+            <summary>
+            Selects the pixel format.
+            </summary>
+            <param name="pixelFormat">The pixel format.</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileLoadException">Wrong pixel format " + pixelFormat.ToString()</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.SelectInternalPixelFormat(System.Drawing.Imaging.PixelFormat)">
+            <summary>
+            Selects the internal pixel format.
+            </summary>
+            <param name="pixelFormat">The pixel format.</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileLoadException">Wrong pixel format " + pixelFormat.ToString()</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.SelectInternalPixelFormat(System.Windows.Media.PixelFormat)">
+            <summary>
+            Selects the internal pixel format.
+            </summary>
+            <param name="pixelFormat">The pixel format.</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileLoadException">Wrong pixel format " + pixelFormat.ToString()</exception>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureLoader.SelectPixelFormat(System.Windows.Media.PixelFormat)">
+            <summary>
+            Selects the pixel format.
+            </summary>
+            <param name="pixelFormat">The pixel format.</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileLoadException">Wrong pixel format " + pixelFormat.ToString()</exception>
+        </member>
+        <member name="T:Zenseless.OpenGL.TextureToFrameBuffer">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+        </member>
+        <member name="T:Zenseless.OpenGL.TextureToFrameBuffer.SetUniforms">
+            <summary>
+            
+            </summary>
+            <param name="currentShader">The current shader.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureToFrameBuffer.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.TextureToFrameBuffer"/> class.
+            </summary>
+            <param name="fragmentShader">The fragment shader.</param>
+            <param name="vertexShader">The vertex shader.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureToFrameBuffer.Draw(Zenseless.HLGL.ITexture,Zenseless.OpenGL.TextureToFrameBuffer.SetUniforms)">
+            <summary>
+            Draws the specified texture.
+            </summary>
+            <param name="texture">The texture.</param>
+            <param name="setUniformsHandler">The set uniforms handler.</param>
+        </member>
+        <member name="F:Zenseless.OpenGL.TextureToFrameBuffer.shader">
+            <summary>
+            The shader
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.TextureToFrameBuffer.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.VAOException">
+            <summary>
+            Exception class for Vertex Array O
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Zenseless.OpenGL.VAOException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.OpenGL.VAOException" /> class.
+            </summary>
+            <param name="msg">The error msg.</param>
+        </member>
+        <member name="T:Zenseless.OpenGL.VAO">
+            <summary>
+            OpenGL Vertex Array Object
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+        </member>
+        <member name="M:Zenseless.OpenGL.VAO.#ctor(OpenTK.Graphics.OpenGL4.PrimitiveType)">
+            <summary>
+            Initializes a new OpenGL Vertex Array Object (<see cref="T:Zenseless.OpenGL.VAO"/>) instance.
+            </summary>
+        </member>
+        <member name="P:Zenseless.OpenGL.VAO.IDLength">
+            <summary>
+            Gets the length of the identifier.
+            </summary>
+            <value>
+            The length of the identifier.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.VAO.PrimitiveType">
+            <summary>
+            Gets or sets the type of the primitive.
+            </summary>
+            <value>
+            The type of the primitive.
+            </value>
+        </member>
+        <member name="P:Zenseless.OpenGL.VAO.DrawElementsType">
+            <summary>
+            Gets the type of the draw elements.
+            </summary>
+            <value>
+            The type of the draw elements.
+            </value>
+        </member>
+        <member name="M:Zenseless.OpenGL.VAO.SetIndex``1(``0[])">
+            <summary>
+            Sets the index array.
+            </summary>
+            <typeparam name="IndexType">The index data type.</typeparam>
+            <param name="data">The index array data.</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.VAO.SetAttribute``1(System.Int32,``0[],OpenTK.Graphics.OpenGL4.VertexAttribPointerType,System.Int32,System.Boolean)">
+            <summary>
+            Sets a vertex attribute array for the given <paramref name="bindingID"/>.
+            </summary>
+            <typeparam name="DataElement">The data element type.</typeparam>
+            <param name="bindingID">The binding ID.</param>
+            <param name="data">The attribute array data.</param>
+            <param name="type">The array elements base type.</param>
+            <param name="elementSize">Element count for each array element.</param>
+            <param name="perInstance">
+            if set to <c>true</c> attribute array contains one entry for each instance
+            if set to <c>false</c> all attribute array elements are for one instance
+            </param>
+        </member>
+        <member name="M:Zenseless.OpenGL.VAO.SetAttribute(System.Int32,OpenTK.Matrix4[],System.Boolean)">
+            <summary>
+            sets or updates a vertex attribute of type Matrix4
+            Matrix4 is stored row-major, but OpenGL expects data to be column-major, so the Matrix4 inputs become transposed in the shader
+            </summary>
+            <param name="bindingID">shader binding location</param>
+            <param name="data">array of Matrix4 inputs</param>
+            <param name="perInstance">if set to <c>true</c> [per instance].</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.VAO.Draw(System.Int32)">
+            <summary>
+            Draws the VAO data (instanced if specified).
+            </summary>
+            <param name="instanceCount">The instance count (how often should the VAO data be drawn).</param>
+        </member>
+        <member name="M:Zenseless.OpenGL.VAO.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            Implementers should dispose all their resources her.
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.VAO.idVAO">
+            <summary>
+            The identifier vao
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.VAO.idBufferBinding">
+            <summary>
+            The identifier buffer binding
+            </summary>
+        </member>
+        <member name="F:Zenseless.OpenGL.VAO.boundBuffers">
+            <summary>
+            The bound buffers
+            </summary>
+        </member>
+        <member name="T:Zenseless.OpenGL.VAOLoader">
+            <summary>
+            Provides static methods for VertexArrayObject data loading
+            </summary>
+        </member>
+        <member name="M:Zenseless.OpenGL.VAOLoader.FromMesh(Zenseless.Geometry.DefaultMesh,Zenseless.HLGL.IShader)">
+            <summary>
+            Creates a VertexArrayObject from a mesh expecting the MeshAttribute names as shader variable names for the attributes 
+            </summary>
+            <param name="mesh">From which to load positions, indices, normals, texture coordinates</param>
+            <param name="shader">Used for the attribute location bindings</param>
+            <returns>A vertex array object</returns>
+        </member>
+        <member name="T:Zenseless.Application.ResourceTextureBitmap">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IResource`1" />
+        </member>
+        <member name="M:Zenseless.Application.ResourceTextureBitmap.#ctor(System.Drawing.Bitmap)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Application.ResourceTextureBitmap"/> class.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+        </member>
+        <member name="P:Zenseless.Application.ResourceTextureBitmap.IsValueCreated">
+            <summary>
+            Gets a value indicating whether this instance is value created.
+            </summary>
+            <value>
+            <c>true</c> if this instance is value created; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Application.ResourceTextureBitmap.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="E:Zenseless.Application.ResourceTextureBitmap.Change">
+            <summary>
+            Occurs when [change].
+            </summary>
+        </member>
+        <member name="F:Zenseless.Application.ResourceTextureBitmap.texture">
+            <summary>
+            The texture
+            </summary>
+        </member>
+        <member name="T:Zenseless.Application.ResourceTextureFile">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IResource`1" />
+        </member>
+        <member name="M:Zenseless.Application.ResourceTextureFile.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Application.ResourceTextureFile"/> class.
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="P:Zenseless.Application.ResourceTextureFile.IsValueCreated">
+            <summary>
+            Gets a value indicating whether this instance is value created.
+            </summary>
+            <value>
+            <c>true</c> if this instance is value created; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Application.ResourceTextureFile.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="E:Zenseless.Application.ResourceTextureFile.Change">
+            <summary>
+            Occurs when [change].
+            </summary>
+        </member>
+        <member name="F:Zenseless.Application.ResourceTextureFile.texture">
+            <summary>
+            The texture
+            </summary>
+        </member>
+        <member name="T:Zenseless.Application.ResourceVertFragShaderFile">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IResource`1" />
+        </member>
+        <member name="M:Zenseless.Application.ResourceVertFragShaderFile.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Application.ResourceVertFragShaderFile"/> class.
+            </summary>
+            <param name="sVertexShdFile_">The s vertex SHD file.</param>
+            <param name="sFragmentShdFile_">The s fragment SHD file.</param>
+        </member>
+        <member name="P:Zenseless.Application.ResourceVertFragShaderFile.IsValueCreated">
+            <summary>
+            Gets a value indicating whether this instance is value created.
+            </summary>
+            <value>
+            <c>true</c> if this instance is value created; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Application.ResourceVertFragShaderFile.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="E:Zenseless.Application.ResourceVertFragShaderFile.Change">
+            <summary>
+            Occurs when [change].
+            </summary>
+        </member>
+        <member name="F:Zenseless.Application.ResourceVertFragShaderFile.shader">
+            <summary>
+            The shader
+            </summary>
+        </member>
+        <member name="T:Zenseless.Application.ResourceVertFragShaderString">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IResource`1" />
+        </member>
+        <member name="M:Zenseless.Application.ResourceVertFragShaderString.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Application.ResourceVertFragShaderString"/> class.
+            </summary>
+            <param name="sVertex">The s vertex.</param>
+            <param name="sFragment">The s fragment.</param>
+        </member>
+        <member name="P:Zenseless.Application.ResourceVertFragShaderString.IsValueCreated">
+            <summary>
+            Gets a value indicating whether this instance is value created.
+            </summary>
+            <value>
+            <c>true</c> if this instance is value created; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Application.ResourceVertFragShaderString.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="E:Zenseless.Application.ResourceVertFragShaderString.Change">
+            <summary>
+            Occurs when [change].
+            </summary>
+        </member>
+        <member name="F:Zenseless.Application.ResourceVertFragShaderString.shader">
+            <summary>
+            The shader
+            </summary>
+        </member>
+    </members>
+</doc>

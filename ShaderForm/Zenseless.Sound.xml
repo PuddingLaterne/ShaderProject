@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zenseless.Sound</name>
+    </assembly>
+    <members>
+        <member name="T:Zenseless.Sound.AudioPlaybackEngine">
+            <summary>
+            This class allows the playing of multiple sounds at the same time. 
+            Sounds can be read from streams or files.
+            All sounds are required to have the same sampling frequency.
+            </summary>
+        </member>
+        <member name="M:Zenseless.Sound.AudioPlaybackEngine.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Create a new instance of the playback engine.
+            </summary>
+            <param name="sampleRate">For all input sounds that will be played</param>
+            <param name="channelCount">Output channel count</param>
+        </member>
+        <member name="M:Zenseless.Sound.AudioPlaybackEngine.PlaySound(System.String,System.Boolean)">
+            <summary>
+            Plays sound from a given file (can be compressed, like with mp3)
+            </summary>
+            <param name="fileName">input sound file name</param>
+            <param name="looped">should playback be looped forever</param>
+        </member>
+        <member name="M:Zenseless.Sound.AudioPlaybackEngine.PlaySound(System.IO.Stream,System.Boolean)">
+            <summary>
+            Plays sound from a stream; you get unbuffered access if you use a file stream 
+            and buffered access if you use a memory stream
+            </summary>
+            <param name="stream">the input stream that contains the sound (can be compressed, like mp3)</param>
+            <param name="looped">should playback be looped forever</param>
+        </member>
+        <member name="M:Zenseless.Sound.AudioPlaybackEngine.DisposeResources">
+            <summary>
+            Implements disposable pattern object disposal. Here it disposes the output device
+            </summary>
+        </member>
+        <member name="T:Zenseless.Sound.FinishedHandler">
+            <summary>
+            Delegate type declaration for the finished handler.
+            </summary>
+        </member>
+        <member name="T:Zenseless.Sound.ITimedMedia">
+            <summary>
+            Interface for a timed media source. Something like an abstract stop watch. 
+            It is intended to abstract from media, like sound files, or videos
+            It has a length or running time.
+            Can be started or stopped and allows seeking and looping.
+            By default looping is off and it is in stopped state.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="P:Zenseless.Sound.ITimedMedia.Position">
+            <summary>
+            Gets or sets the current positions time in seconds.
+            </summary>
+            <value>
+            The current positions time in seconds.
+            </value>
+        </member>
+        <member name="P:Zenseless.Sound.ITimedMedia.IsLooping">
+            <summary>
+            Lopping means that after the the media was running for its length it will 
+            continue to run from the beginning
+            </summary>
+            <value>
+              <c>true</c> if this instance is looping; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Sound.ITimedMedia.IsRunning">
+            <summary>
+            Gets or sets a value indicating whether this instance is running and the position is changing.
+            </summary>
+            <value>
+              <c>true</c> if this instance is running; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Sound.ITimedMedia.Length">
+            <summary>
+            Gets or sets the length in seconds.
+            </summary>
+            <value>
+            The length in seconds.
+            </value>
+        </member>
+        <member name="E:Zenseless.Sound.ITimedMedia.TimeFinished">
+            <summary>
+            Occurs each time the media is finished with running (length is reached).
+            </summary>
+        </member>
+        <member name="T:Zenseless.Sound.SoundTimeSource">
+            <summary>
+            Encapsulates the playing and seeking of an audio file (unbuffered). 
+            Intended for use in multi-media applications.
+            </summary>
+            <seealso cref="T:Zenseless.Base.Disposable" />
+            <seealso cref="T:Zenseless.Sound.ITimedMedia" />
+        </member>
+        <member name="E:Zenseless.Sound.SoundTimeSource.TimeFinished">
+            <summary>
+            Occurs each time the time source is finished with running (length is reached).
+            </summary>
+        </member>
+        <member name="M:Zenseless.Sound.SoundTimeSource.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.Sound.SoundTimeSource"/> class.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+        </member>
+        <member name="P:Zenseless.Sound.SoundTimeSource.Length">
+            <summary>
+            Gets or sets the play length in seconds.
+            </summary>
+            <value>
+            The play length in seconds.
+            </value>
+            <exception cref="T:System.ArgumentException">NAudioFacade cannot change Length</exception>
+        </member>
+        <member name="P:Zenseless.Sound.SoundTimeSource.IsLooping">
+            <summary>
+            Lopping means that after the time source was running for its length it will
+            continue to run from the beginning
+            </summary>
+            <value>
+            <c>true</c> if this instance is looping; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Sound.SoundTimeSource.IsRunning">
+            <summary>
+            Gets or sets a value indicating whether this instance is running and the position is changing.
+            </summary>
+            <value>
+            <c>true</c> if this instance is running; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.Sound.SoundTimeSource.Position">
+            <summary>
+            Gets or sets the position in seconds.
+            </summary>
+            <value>
+            The position in seconds.
+            </value>
+        </member>
+        <member name="M:Zenseless.Sound.SoundTimeSource.DisposeResources">
+            <summary>
+            Will be called from the default Dispose method.
+            </summary>
+        </member>
+        <member name="T:Zenseless.Sound.SoundLoopStream">
+            <summary>
+            A wave stream that is looped when played back (can be turned off)
+            </summary>
+            <seealso cref="T:NAudio.Wave.WaveStream" />
+        </member>
+        <member name="M:Zenseless.Sound.SoundLoopStream.#ctor(NAudio.Wave.WaveStream)">
+            <summary>
+            Creates a new Loop stream
+            </summary>
+            <param name="sourceStream">The stream to read from. Note: the Read method of this stream should return 0 when it reaches the end
+            or else we will not loop to the start again.</param>
+        </member>
+        <member name="P:Zenseless.Sound.SoundLoopStream.EnableLooping">
+            <summary>
+            Use this to turn looping on or off
+            </summary>
+        </member>
+        <member name="P:Zenseless.Sound.SoundLoopStream.WaveFormat">
+            <summary>
+            Return source stream's wave format
+            </summary>
+        </member>
+        <member name="P:Zenseless.Sound.SoundLoopStream.Length">
+            <summary>
+            LoopStream simply returns
+            </summary>
+        </member>
+        <member name="P:Zenseless.Sound.SoundLoopStream.Position">
+            <summary>
+            LoopStream simply passes on positioning to source stream
+            </summary>
+        </member>
+        <member name="M:Zenseless.Sound.SoundLoopStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
+            </summary>
+            <param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between <paramref name="offset" /> and (<paramref name="offset" /> + <paramref name="count" /> - 1) replaced by the bytes read from the current source.</param>
+            <param name="offset">The zero-based byte offset in <paramref name="buffer" /> at which to begin storing the data read from the current stream.</param>
+            <param name="count">The maximum number of bytes to be read from the current stream.</param>
+            <returns>
+            The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.
+            </returns>
+        </member>
+    </members>
+</doc>

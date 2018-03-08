@@ -1,0 +1,996 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zenseless.HLGL</name>
+    </assembly>
+    <members>
+        <member name="T:Zenseless.HLGL.DefaultShader">
+            <summary>
+            Contains source code string constants for commonly used shaders
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.DefaultShader.VertexShaderScreenQuad">
+            <summary>
+            Vertex shader that creates a screen filling quad if called with DrawArrays(4)
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.DefaultShader.VertexShaderParticle">
+            <summary>
+            The vertex shader particle
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.DefaultShader.FragmentShaderColor">
+            <summary>
+            The fragment shader color
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.DefaultShader.FragmentShaderPointCircle">
+            <summary>
+            The fragment shader point circle
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.DefaultShader.FragmentShaderCopy">
+            <summary>
+            The fragment shader copy
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.DefaultShader.FragmentShaderChecker">
+            <summary>
+            The fragment shader checker
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.IAnimation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Zenseless.HLGL.IAnimation.AnimationLength">
+            <summary>
+            Gets or sets the length of the animation.
+            </summary>
+            <value>
+            The length of the animation.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.IAnimation.Draw(Zenseless.Geometry.IReadOnlyBox2D,System.Single)">
+            <summary>
+            Draws the specified rectangle.
+            </summary>
+            <param name="rectangle">The rectangle.</param>
+            <param name="totalSeconds">The total seconds.</param>
+        </member>
+        <member name="T:Zenseless.HLGL.IRenderContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Zenseless.HLGL.IRenderContext.StateManager">
+            <summary>
+            Gets the state manager.
+            </summary>
+            <value>
+            The state manager.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.IRenderContext.CreateDrawConfiguration">
+            <summary>
+            Creates the draw configuration.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.IRenderContext.CreateRenderSurface(System.Int32,System.Int32,System.Boolean,System.Byte,System.Boolean)">
+            <summary>
+            Creates the render surface.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="hasDepthBuffer">if set to <c>true</c> [has depth buffer].</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.IRenderContext.CreateShader">
+            <summary>
+            Creates the shader.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.IRenderContext.DrawPoints(System.Int32)">
+            <summary>
+            Draws the points.
+            </summary>
+            <param name="count">The count.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IRenderContext.GetFrameBuffer">
+            <summary>
+            Gets the frame buffer.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Zenseless.HLGL.IDrawConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Zenseless.HLGL.IDrawConfiguration.BackfaceCulling">
+            <summary>
+            Gets or sets a value indicating whether [backface culling].
+            </summary>
+            <value>
+              <c>true</c> if [backface culling]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.IDrawConfiguration.InstanceCount">
+            <summary>
+            Gets or sets the instance count.
+            </summary>
+            <value>
+            The instance count.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.IDrawConfiguration.ShaderPointSize">
+            <summary>
+            Gets or sets a value indicating whether [shader point size].
+            </summary>
+            <value>
+              <c>true</c> if [shader point size]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.IDrawConfiguration.ZBufferTest">
+            <summary>
+            Gets or sets a value indicating whether [z buffer test].
+            </summary>
+            <value>
+              <c>true</c> if [z buffer test]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.Draw(Zenseless.HLGL.IRenderContext)">
+            <summary>
+            Draws the specified context.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.SetInputTexture(System.String)">
+            <summary>
+            Sets the input texture.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.SetInputTexture(System.String,Zenseless.HLGL.IRenderSurface)">
+            <summary>
+            Sets the input texture.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="image">The image.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateInstanceAttribute(System.String,System.Single[])">
+            <summary>
+            Updates the instance attribute.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateInstanceAttribute(System.String,System.Int32[])">
+            <summary>
+            Updates the instance attribute.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateInstanceAttribute(System.String,System.Numerics.Vector2[])">
+            <summary>
+            Updates the instance attribute.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateInstanceAttribute(System.String,System.Numerics.Vector3[])">
+            <summary>
+            Updates the instance attribute.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateInstanceAttribute(System.String,System.Numerics.Vector4[])">
+            <summary>
+            Updates the instance attribute.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateMeshShader(Zenseless.Geometry.DefaultMesh,System.String)">
+            <summary>
+            Updates the mesh shader.
+            </summary>
+            <param name="mesh">The mesh.</param>
+            <param name="shaderName">Name of the shader.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateShaderBuffer``1(System.String,``0[])">
+            <summary>
+            Updates the shader buffer.
+            </summary>
+            <typeparam name="DATA_ELEMENT_TYPE">The type of the ata element type.</typeparam>
+            <param name="name">The name.</param>
+            <param name="uniformArray">The uniform array.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IDrawConfiguration.UpdateUniforms``1(System.String,``0)">
+            <summary>
+            Updates the uniforms.
+            </summary>
+            <typeparam name="DATA">The type of the ata.</typeparam>
+            <param name="name">The name.</param>
+            <param name="uniforms">The uniforms.</param>
+        </member>
+        <member name="T:Zenseless.HLGL.IRenderSurface">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Zenseless.HLGL.IRenderSurface.Texture">
+            <summary>
+            Gets the texture.
+            </summary>
+            <value>
+            The texture.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.IRenderSurface.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.IRenderSurface.Draw(Zenseless.HLGL.IDrawConfiguration)">
+            <summary>
+            Draws the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="T:Zenseless.HLGL.ShaderType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderType.FragmentShader">
+            <summary>
+            The fragment shader
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderType.VertexShader">
+            <summary>
+            The vertex shader
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderType.GeometryShader">
+            <summary>
+            The geometry shader
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderType.TessEvaluationShader">
+            <summary>
+            The tess evaluation shader
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderType.TessControlShader">
+            <summary>
+            The tess control shader
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderType.ComputeShader">
+            <summary>
+            The compute shader
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.ShaderResourceType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderResourceType.Uniform">
+            <summary>
+            The uniform
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderResourceType.Attribute">
+            <summary>
+            The attribute
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderResourceType.UniformBuffer">
+            <summary>
+            The uniform buffer
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderResourceType.RWBuffer">
+            <summary>
+            The rw buffer
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.IShader">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="P:Zenseless.HLGL.IShader.IsLinked">
+            <summary>
+            Gets a value indicating whether this instance is linked.
+            </summary>
+            <value>
+              <c>true</c> if this instance is linked; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.IShader.LastLog">
+            <summary>
+            Gets the last log.
+            </summary>
+            <value>
+            The last log.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.IShader.ProgramID">
+            <summary>
+            Gets the program identifier.
+            </summary>
+            <value>
+            The program identifier.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.IShader.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.IShader.Compile(System.String,Zenseless.HLGL.ShaderType)">
+            <summary>
+            Compiles the specified s shader.
+            </summary>
+            <param name="sShader">The s shader.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IShader.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.IShader.GetResourceLocation(Zenseless.HLGL.ShaderResourceType,System.String)">
+            <summary>
+            Gets the resource location.
+            </summary>
+            <param name="resourceType">Type of the resource.</param>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.IShader.Link">
+            <summary>
+            Links this instance.
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.IShaderProgram">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.IStateManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.IStateManager.Get``2">
+            <summary>
+            Gets this instance.
+            </summary>
+            <typeparam name="INTERFACE">The type of the nterface.</typeparam>
+            <typeparam name="KEYTYPE">The type of the eytype.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.IStateManager.Register``2(Zenseless.HLGL.IState)">
+            <summary>
+            Registers the specified state implementation.
+            </summary>
+            <typeparam name="INTERFACE">The type of the nterface.</typeparam>
+            <typeparam name="KEYTYPE">The type of the eytype.</typeparam>
+            <param name="stateImplementation">The state implementation.</param>
+        </member>
+        <member name="T:Zenseless.HLGL.TextureFilterMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.TextureFilterMode.Nearest">
+            <summary>
+            The nearest
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.TextureFilterMode.Linear">
+            <summary>
+            The linear
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.TextureFilterMode.Mipmap">
+            <summary>
+            The mipmap
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.TextureWrapFunction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.TextureWrapFunction.Repeat">
+            <summary>
+            The repeat
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.TextureWrapFunction.MirroredRepeat">
+            <summary>
+            The mirrored repeat
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.TextureWrapFunction.ClampToEdge">
+            <summary>
+            The clamp to edge
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.TextureWrapFunction.ClampToBorder">
+            <summary>
+            The clamp to border
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.ITexture">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="P:Zenseless.HLGL.ITexture.Filter">
+            <summary>
+            Gets or sets the filter.
+            </summary>
+            <value>
+            The filter.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.ITexture.ID">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.ITexture.WrapFunction">
+            <summary>
+            Gets or sets the wrap function.
+            </summary>
+            <value>
+            The wrap function.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.ITexture.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.ITexture.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.ITexture2D">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.ITexture" />
+        </member>
+        <member name="P:Zenseless.HLGL.ITexture2D.Height">
+            <summary>
+            Gets the height.
+            </summary>
+            <value>
+            The height.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.ITexture2D.Width">
+            <summary>
+            Gets the width.
+            </summary>
+            <value>
+            The width.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.ITexture2D.LoadPixels(System.IntPtr,System.Int32,System.Int32,System.Byte,System.Boolean)">
+            <summary>
+            Loads the pixels.
+            </summary>
+            <param name="pixels">The pixels.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="components">The components.</param>
+            <param name="floatingPoint">if set to <c>true</c> [floating point].</param>
+        </member>
+        <member name="T:Zenseless.HLGL.ShaderException">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="P:Zenseless.HLGL.ShaderException.ShaderLog">
+            <summary>
+            Gets the shader log.
+            </summary>
+            <value>
+            The shader log.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.HLGL.ShaderException" /> class.
+            </summary>
+            <param name="msg">The error msg</param>
+            <param name="log">The shader log</param>
+        </member>
+        <member name="T:Zenseless.HLGL.ShaderCompileException">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.ShaderException" />
+        </member>
+        <member name="P:Zenseless.HLGL.ShaderCompileException.ShaderType">
+            <summary>
+            Gets the type of the shader.
+            </summary>
+            <value>
+            The type of the shader.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.ShaderCompileException.ShaderCode">
+            <summary>
+            Gets the shader code.
+            </summary>
+            <value>
+            The shader code.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderCompileException.#ctor(Zenseless.HLGL.ShaderType,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.HLGL.ShaderException" /> class.
+            </summary>
+            <param name="shaderType">The type of the shader</param>
+            <param name="msg">The error msg.</param>
+            <param name="log">The shader log</param>
+            <param name="shaderCode">The source code of the shader</param>
+        </member>
+        <member name="T:Zenseless.HLGL.ShaderLogLine">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLogLine.WellKnownTypeWarning">
+            <summary>
+            The string type for the well known type warning
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLogLine.WellKnownTypeError">
+            <summary>
+            The string type for the well known type error
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLogLine.WellKnownTypeInfo">
+            <summary>
+            The string type for the well known type information
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLogLine.Type">
+            <summary>
+            The type
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLogLine.FileNumber">
+            <summary>
+            The file number
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLogLine.LineNumber">
+            <summary>
+            The line number
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLogLine.Message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLogLine.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:Zenseless.HLGL.ShaderLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.HLGL.ShaderLog"/> class.
+            </summary>
+            <param name="log">The log.</param>
+        </member>
+        <member name="P:Zenseless.HLGL.ShaderLog.Lines">
+            <summary>
+            Gets the lines.
+            </summary>
+            <value>
+            The lines.
+            </value>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.ParseLogLine(System.String)">
+            <summary>
+            Parses the log line.
+            </summary>
+            <param name="line">The line.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.ParseLogLineNVIDIA(System.String)">
+            <summary>
+            Parses the log line nvidia.
+            </summary>
+            <param name="line">The line.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.ParseNVType(System.String)">
+            <summary>
+            Parses the type of the nv.
+            </summary>
+            <param name="v">The v.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.ParseNVLineNumber(System.String)">
+            <summary>
+            Parses the nv line number.
+            </summary>
+            <param name="v">The v.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.ParseNVFileNumber(System.String)">
+            <summary>
+            Parses the nv file number.
+            </summary>
+            <param name="v">The v.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.ParseType(System.String)">
+            <summary>
+            Parses the type.
+            </summary>
+            <param name="typeString">The type string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zenseless.HLGL.ShaderLog.Parse(System.String)">
+            <summary>
+            Parses the specified number.
+            </summary>
+            <param name="number">The number.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Zenseless.HLGL.ShaderLog.lines">
+            <summary>
+            The lines
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.SpriteSheet">
+            <summary>
+            class for grid based sprite sheets with equal sized rectangular sprites
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.SpriteSheet.#ctor(Zenseless.HLGL.ITexture,System.UInt32,System.UInt32,System.Single,System.Single)">
+            <summary>
+            create a new instance
+            </summary>
+            <param name="tex">The texture.</param>
+            <param name="spritesPerRow">The sprites per row.</param>
+            <param name="spritesPerColumn">The sprites per column.</param>
+            <param name="spriteBoundingBoxWidth">Width of the sprite bounding box.</param>
+            <param name="spriteBoundingBoxHeight">Height of the sprite bounding box.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.SpriteSheet.CalcSpriteTexCoords(System.UInt32)">
+            <summary>
+            Calculates texture coordinates for a given sprite id uses CalcSpriteTexCoords
+            </summary>
+            <param name="spriteID">number of sprite 0-based; counted from left-top</param>
+            <returns>
+            texture coordinates of sprite
+            </returns>
+        </member>
+        <member name="M:Zenseless.HLGL.SpriteSheet.CalcSpriteTexCoords(System.UInt32,System.UInt32,System.UInt32,System.Single,System.Single)">
+            <summary>
+            Calculates texture coordinates for a given sprite id
+            </summary>
+            <param name="spriteID">number of sprite 0-based; counted from left-top</param>
+            <param name="spritesPerRow">number of sprites per row</param>
+            <param name="spritesPerColumn">number of sprites per column</param>
+            <param name="spriteBoundingBoxWidth">Width of the sprite bounding box.</param>
+            <param name="spriteBoundingBoxHeight">Height of the sprite bounding box.</param>
+            <returns>
+            texture coordinates of sprite
+            </returns>
+        </member>
+        <member name="M:Zenseless.HLGL.SpriteSheet.Activate">
+            <summary>
+            Activates this instance.
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.SpriteSheet.Deactivate">
+            <summary>
+            Deactivates this instance.
+            </summary>
+        </member>
+        <member name="P:Zenseless.HLGL.SpriteSheet.SpriteBoundingBoxWidth">
+            <summary>
+            Gets the width of the sprite bounding box.
+            </summary>
+            <value>
+            The width of the sprite bounding box.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.SpriteSheet.SpriteBoundingBoxHeight">
+            <summary>
+            Gets the height of the sprite bounding box.
+            </summary>
+            <value>
+            The height of the sprite bounding box.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.SpriteSheet.SpritesPerRow">
+            <summary>
+            Gets the sprites per row.
+            </summary>
+            <value>
+            The sprites per row.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.SpriteSheet.SpritesPerColumn">
+            <summary>
+            Gets the sprites per column.
+            </summary>
+            <value>
+            The sprites per column.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.SpriteSheet.Tex">
+            <summary>
+            Gets the tex.
+            </summary>
+            <value>
+            The tex.
+            </value>
+        </member>
+        <member name="T:Zenseless.HLGL.StateCommandGL`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TYPE">The type of the ype.</typeparam>
+            <seealso cref="T:Zenseless.HLGL.IStateTyped`1" />
+        </member>
+        <member name="M:Zenseless.HLGL.StateCommandGL`1.#ctor(System.Action{`0},`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.HLGL.StateCommandGL`1"/> class.
+            </summary>
+            <param name="glCommand">The gl command.</param>
+            <param name="defaultValue">The default value.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Zenseless.HLGL.StateCommandGL`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="F:Zenseless.HLGL.StateCommandGL`1.value">
+            <summary>
+            The value
+            </summary>
+        </member>
+        <member name="F:Zenseless.HLGL.StateCommandGL`1.glCommand">
+            <summary>
+            The gl command
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.StateCommandGL`1.UpdateGL">
+            <summary>
+            Updates the gl.
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.TypedHandle`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TYPE">The type of the ype.</typeparam>
+        </member>
+        <member name="M:Zenseless.HLGL.TypedHandle`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Zenseless.HLGL.TypedHandle`1"/> struct.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="P:Zenseless.HLGL.TypedHandle`1.ID">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.TypedHandle`1.IsNull">
+            <summary>
+            Gets a value indicating whether this instance is null.
+            </summary>
+            <value>
+              <c>true</c> if this instance is null; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Zenseless.HLGL.TypedHandle`1.NULL">
+            <summary>
+            The null
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.IResource`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="RESOURCE_TYPE">The type of the esource type.</typeparam>
+        </member>
+        <member name="P:Zenseless.HLGL.IResource`1.IsValueCreated">
+            <summary>
+            Gets a value indicating whether this instance is value created.
+            </summary>
+            <value>
+              <c>true</c> if this instance is value created; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Zenseless.HLGL.IResource`1.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="E:Zenseless.HLGL.IResource`1.Change">
+            <summary>
+            Occurs when [change].
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.IResourceProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Zenseless.HLGL.IResourceProvider.Add``1(System.String,Zenseless.HLGL.IResource{``0})">
+            <summary>
+            Adds the specified name.
+            </summary>
+            <typeparam name="RESOURCE_TYPE">The type of the esource type.</typeparam>
+            <param name="name">The name.</param>
+            <param name="resource">The resource.</param>
+        </member>
+        <member name="M:Zenseless.HLGL.IResourceProvider.Get``1(System.String)">
+            <summary>
+            Gets the specified name.
+            </summary>
+            <typeparam name="RESOURCE_TYPE">The type of the esource type.</typeparam>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Zenseless.HLGL.IState">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.IStateBool">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IState" />
+        </member>
+        <member name="P:Zenseless.HLGL.IStateBool.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Zenseless.HLGL.IStateBool"/> is enabled.
+            </summary>
+            <value>
+              <c>true</c> if enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Zenseless.HLGL.IStateTyped`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TYPE">The type of the ype.</typeparam>
+            <seealso cref="T:Zenseless.HLGL.IState" />
+        </member>
+        <member name="P:Zenseless.HLGL.IStateTyped`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Zenseless.HLGL.StateManager">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateManager" />
+        </member>
+        <member name="M:Zenseless.HLGL.StateManager.Get``2">
+            <summary>
+            Returns the state implementation registered with the KEYTYPE cast to the given INTERFACE
+            </summary>
+            <typeparam name="INTERFACE">interface you want the returned state implementation to have</typeparam>
+            <typeparam name="KEYTYPE">used to determine which registered state implementation to return</typeparam>
+            <returns>a state implementation</returns>
+        </member>
+        <member name="M:Zenseless.HLGL.StateManager.Register``2(Zenseless.HLGL.IState)">
+            <summary>
+            Register a state implementation with the unique key type KEYTYPE and the access interface INTERFACE
+            </summary>
+            <typeparam name="INTERFACE">interface intended for later GetState calls, here used for sanity type checking</typeparam>
+            <typeparam name="KEYTYPE">unique key type</typeparam>
+            <param name="stateImplementation">implementation of INTERFACE</param>
+        </member>
+        <member name="T:Zenseless.HLGL.States">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Zenseless.HLGL.States.IBackfaceCulling">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateBool" />
+        </member>
+        <member name="T:Zenseless.HLGL.States.IBlending">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateBool" />
+        </member>
+        <member name="T:Zenseless.HLGL.States.IClearColor">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateTyped`1" />
+        </member>
+        <member name="T:Zenseless.HLGL.States.ILineWidth">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateTyped`1" />
+        </member>
+        <member name="T:Zenseless.HLGL.States.IPointSprite">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateBool" />
+        </member>
+        <member name="T:Zenseless.HLGL.States.IShaderPointSize">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateBool" />
+        </member>
+        <member name="T:Zenseless.HLGL.States.IZBufferTest">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Zenseless.HLGL.IStateBool" />
+        </member>
+    </members>
+</doc>
