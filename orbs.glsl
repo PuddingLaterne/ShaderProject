@@ -136,8 +136,8 @@ float distanceField(vec3 p, float t, sphere s, float seed)
 
 	float rnd = rand(seed*100.0);
 	t += rnd;
-	t *= mix(2.0,4.0,rnd);
-	t *= sign(rand(rnd)-0.5);
+	t *= mix(1.0,8.0,rnd);
+	t *= sign(rand(seed*20.0)-0.5);
 
 	rnd = rand(seed*200.0);
 	float rot = p.y-s.r*0.2;
