@@ -1,6 +1,7 @@
 #version 330
 
 #define CLOUDS_ON
+#define FADE
 
 uniform vec2 iResolution;
 uniform float iGlobalTime;
@@ -79,7 +80,7 @@ float fbm(vec3 p)
 
 float density(vec3 p)
 {
-	p.y += 0.7;
+	p.y += 1.0;
 	p.y += cos(p.x*1.4) * 0.2;
 	p.y += cos(p.z)*0.1;
 	p *= 1.2;
@@ -124,7 +125,7 @@ float gradient(vec2 uv)
 	uv.x *= 0.8;
 	uv *= 1.0 + sin(iGlobalTime*10) * 0.01;
 	float g = clamp(1.0 - length(uv), 0, 1);
-	return clamp(g, 0, 1);
+	return clamp(g, 0.0, 1.0);
 }
 
 float circle(vec2 uv, float r)
@@ -230,7 +231,7 @@ float ghost2(vec2 uv)
 float ghosts(vec2 uv)
 {	
 	float d = ghost1(uv) + ghost2(uv);
-	return clamp(d, 0, 1);
+	return clamp(d, 0.0, 1.0);
 }
 
 vec3 tonemapping(vec3 color, float exposure, float gamma)
@@ -242,21 +243,41 @@ vec3 tonemapping(vec3 color, float exposure, float gamma)
 	return color;
 }
 
+const vec2 FADE_T = vec2(0.0,5.0);
+const vec2 FADE_D = vec2(1.0, 1.0);
+
+float fadeIn(){return smoothstep(FADE_T.x, FADE_T.x+FADE_D.x,iGlobalTime);}
+float fadeOut(){return smoothstep(FADE_T.y-FADE_D.y, FADE_T.y,iGlobalTime);}
+
+vec3 fade(vec3 color)
+{
+	vec3 from = vec3(0.0);
+	vec3 to = vec3(0.0);
+	color = mix(from, color, fadeIn());
+	color = mix(color, to, fadeOut());
+	return color;
+}
 
 void main()
 {
+	vec2 coord = gl_FragCoord.xy;
+	#ifdef FADE
+		coord.y -= iResolution.y * (1.0 - fadeIn());
+		coord.y += iResolution.y * fadeOut()*1.2;
+	#endif
+	
 	vec2 res = vec2(max(iResolution.x, iResolution.y));
-	vec2 uv = gl_FragCoord.xy / res;
+	vec2 uv = coord / res;
 	uv = (uv-vec2(0.5))*2.0;
     uv.y += 0.5;
     uv *= 1.2;
 			
 	ray r;
 	r.o = vec3(0.0);
-	r.d = calcCameraRayDir(60,  gl_FragCoord.xy, res);
+	r.d = calcCameraRayDir(60, coord, res);
 		
 	float gradient = gradient(uv);
-	float moon = distance(uv, vec2(0.0,0.2));
+	float moon = distance(uv, vec2(0.0,0.1));
 	moon = 1.0 - smoothstep(0.05, 0.08, moon);
 	
 	vec3 bg = mix(vec3(0.0, 0.1, 0.1),vec3(0.1, 0.3, 0.5), min(1.0, gradient*2.0));
@@ -282,9 +303,14 @@ void main()
 		}
 		t += STEPSIZE;
 	}	
+	sum = clamp(sum,0.0,1.0);
 	#endif
 	vec4 c;
 	c = vec4(bg, 1.0) * (1.0 - sum.a) + sum;
 	c.rgb = tonemapping(c.rgb, 1.5,1.2);
+	
+	#ifdef FADE
+	c.rgb = fade(c.rgb);
+	#endif
 	gl_FragColor = c;
 }

@@ -1,5 +1,7 @@
 #version 330
 
+#define FADE
+
 const float PI = 3.1415926535897932384626433832795;
 const float TWOPI = 2 * PI;
 const float EPSILON = 0.0001;
@@ -405,8 +407,29 @@ vec3 reflection(ray r, result res, float time)
 	return getColor(res,time);
 }
 
+const vec2 FADE_T = vec2(32,50.0);
+const vec2 FADE_D = vec2(1.0, 2.0);
+
+float fadeIn(){return smoothstep(FADE_T.x, FADE_T.x+FADE_D.x,iGlobalTime);}
+float fadeOut(){return smoothstep(FADE_T.y-FADE_D.y, FADE_T.y,iGlobalTime);}
+
+vec3 fade(vec3 color)
+{
+	vec3 from = vec3(0.0);
+	vec3 to = vec3(0.0);
+	color = mix(from, color, fadeIn());
+	color = mix(color, to, fadeOut());
+	return color;
+}
+
 void main()
 {
+	vec2 coord = gl_FragCoord.xy;
+	#ifdef FADE
+		coord.y += iResolution.y * (1.0 - fadeIn());
+		coord.y += iResolution.y * fadeOut() * 2.0;
+	#endif
+
 	float time = iGlobalTime;		
 	vec4 color = vec4(0.0);    
 		
@@ -420,7 +443,7 @@ void main()
 	r.o.z += 5.0;
 	r.o.y += 0.2;
 	float fx = tan(radians(70.0) / 2.0) / iResolution.x;
-	vec2 d = fx * ( gl_FragCoord.xy * 2.0 - iResolution);
+	vec2 d = fx * ( coord * 2.0 - iResolution);
 	r.d = normalize(vec3(d, 1.0));
 	r.d = rotateX(r.d, camRotX);
 	r.d = rotateY(r.d, camRotY);
@@ -446,5 +469,8 @@ void main()
 	halo *= max(0.0, sign(res.t - length(l)));
 	halo = smoothstep(0.99, 0.999, halo);
 	color.rgb += halo * vec3(0.2, 0.2, 0.1);
+	#ifdef FADE
+		color.rgb = fade(color.rgb);
+	#endif
 	gl_FragColor = color;
 }

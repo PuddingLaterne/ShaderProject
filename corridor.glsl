@@ -1,6 +1,7 @@
 #version 330
 
 //#define SHOWHEIGHTFIELD
+#define FADE
 
 uniform vec2 iResolution;
 uniform float iGlobalTime;
@@ -493,15 +494,42 @@ vec4 textures(vec2 uv)
 	return vec4(fbm, voronoi, 0.0, 0.0);
 }
 
+const vec2 FADE_T = vec2(18.0,32.0);
+const vec2 FADE_D = vec2(1.0, 1.0);
+
+float fadeIn(){return smoothstep(FADE_T.x, FADE_T.x+FADE_D.x,iGlobalTime);}
+float fadeOut(){return smoothstep(FADE_T.y-FADE_D.y, FADE_T.y,iGlobalTime);}
+
+vec3 fade(vec3 color)
+{
+	vec3 from = vec3(0.0);
+	vec3 to = vec3(0.0);
+	color = mix(from, color, fadeIn());
+	color = mix(color, to, fadeOut());
+	return color;
+}
+
 void main()
 {
+	vec2 coord = gl_FragCoord.xy;
+	#ifdef FADE
+		coord.y += iResolution.y * (1.0 - fadeIn());
+		coord.y -= iResolution.y * fadeOut() * 2.0;
+	#endif
+
 	vec2 uv = gl_FragCoord.xy / iResolution.xy;
 	
+	vec3 color;
 	#ifdef SHOWHEIGHTFIELD
-		image = vec4(1.0) * heightField((uv-vec2(0.5))*10.0,iGlobalTime*3.0);
+		color = vec3(1.0) * heightField((uv-vec2(0.5))*10.0,iGlobalTime*3.0);
 	#else
-		ray r = createRay(70.0, gl_FragCoord.xy, iResolution.xy);		
-		image = vec4(corridor(r,uv),1.0);	
-	#endif
+		ray r = createRay(70.0, coord, iResolution.xy);		
+		color = corridor(r,uv);	
+	#endif	
+	
+	#ifdef FADE
+		color = fade(color);
+	#endif	
+	image = vec4(color,1.0);
 	buffer = textures(uv);
 }

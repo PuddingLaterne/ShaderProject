@@ -7,22 +7,23 @@
       <ShaderKeyframes>
         <ShaderKeyframe>
           <Time>0</Time>
-          <ShaderPath>.\clouds.glsl</ShaderPath>
+          <ShaderPath>..\clouds.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
           <Time>5</Time>
-          <ShaderPath>.\floatingaway.glsl</ShaderPath>
+          <ShaderPath>..\floatingaway.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
           <Time>18</Time>
-          <ShaderPath>.\corridor.glsl</ShaderPath>
+          <ShaderPath>..\corridor.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
           <Time>32</Time>
-          <ShaderPath>.\bouncyboi.glsl</ShaderPath>
+          <ShaderPath>..\bouncyboi.glsl</ShaderPath>
         </ShaderKeyframe>
       </ShaderKeyframes>
     </Track>
   </Tracks>
   <Textures />
+  <SoundFileName />
 </DemoData2>

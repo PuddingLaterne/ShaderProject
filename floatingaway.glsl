@@ -1,5 +1,7 @@
 #version 330
 
+#define FADE
+
 const float PI = 3.1415926535897932384626433832795;
 const float TWOPI = 2.0 * PI;
 const float PIHALF = PI / 2.0;
@@ -8,7 +10,7 @@ const float INFINITY = 1000000000.0;
 
 const int MOTIONBLURSAMPLES = 4;
 const float MOTIONBLURDELTA = 0.01;
-const int DOFSAMPLES = 6;
+const int DOFSAMPLES = 4;
 const float DOFDELTA = 0.01;
 
 const float FOCUS = 4.0;
@@ -18,7 +20,7 @@ const float[4] LAYERS = float[4](2.0, 4.0, 6.0, 12.0);
 
 const vec3 ORB = vec3(0.9, 0.4, 0.0);
 const vec3 GLOW = vec3(1.0, 1.0, 0.0);
-const vec3 BG = vec3(0.2, 0.2, 0.4);
+const vec3 BG = vec3(0.0, 0.1, 0.1);
 
 const vec2 FOG = vec2(8.0, 20.0);
 const vec3 MOVEMENT = vec3(0.2,-0.4,0.0);
@@ -136,7 +138,7 @@ float distanceField(vec3 p, float t, sphere s, float seed)
 
 	float rnd = rand(seed*100.0);
 	t += rnd;
-	t *= mix(1.0,8.0,rnd);
+	t *= mix(2.0,8.0,rnd);
 	t *= sign(rand(seed*20.0)-0.5);
 
 	rnd = rand(seed*200.0);
@@ -291,12 +293,33 @@ vec3 background(vec2 uv)
 	return bg;
 }
 
+const vec2 FADE_T = vec2(5.0,18.0);
+const vec2 FADE_D = vec2(1.0, 1.0);
+
+float fadeIn(){return smoothstep(FADE_T.x, FADE_T.x+FADE_D.x,iGlobalTime);}
+float fadeOut(){return smoothstep(FADE_T.y-FADE_D.y, FADE_T.y,iGlobalTime);}
+
+vec3 fade(vec3 color)
+{
+	vec3 from = vec3(0.0);
+	vec3 to = vec3(0.0);
+	color = mix(from, color, fadeIn());
+	color = mix(color, to, fadeOut());
+	return color;
+}
+
 void main()
 {
-	vec2 uv = vec2(2.0*gl_FragCoord.xy - iResolution)/iResolution.y;
+	vec2 coord = gl_FragCoord.xy;
+	#ifdef FADE
+		coord.y -= iResolution.y * (1.0 - fadeIn());
+		coord.y -= iResolution.y * fadeOut() * 2.0;
+	#endif
+
+	vec2 uv = vec2(2.0*coord - iResolution)/iResolution.y;
 	ray r;
 	r.o = vec3(0.0);
-	r.d = getRayDirection(gl_FragCoord.xy,iResolution.xy, 60.0);
+	r.d = getRayDirection(coord,iResolution.xy, 60.0);
 		
 	vec3 fp = r.o + intersectPlane(r,plane(vec3(0.0,0.0,-1.0),FOCUS)).t*r.d;
 	
@@ -319,5 +342,8 @@ void main()
 		color += c*falloff;
 	}
 	color /= total*float(DOFSAMPLES+1);
-	gl_FragColor = vec4(color, 1.0);
+	#ifdef FADE
+		color = fade(color);
+	#endif
+	gl_FragColor = vec4(color,1.0);
 }
