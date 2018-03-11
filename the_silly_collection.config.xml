@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DemoData2 xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Uniforms />
+  <Tracks>
+    <Track>
+      <Name>the silly collection</Name>
+      <ShaderKeyframes>
+        <ShaderKeyframe>
+          <Time>0</Time>
+          <ShaderPath>.\shaders\clouds.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>4</Time>
+          <ShaderPath>.\shaders\floatingaway.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>15</Time>
+          <ShaderPath>.\shaders\corridor.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>30</Time>
+          <ShaderPath>.\shaders\bouncyboi.glsl</ShaderPath>
+        </ShaderKeyframe>
+      </ShaderKeyframes>
+    </Track>
+  </Tracks>
+  <Textures />
+  <SoundFileName>.\music.wav</SoundFileName>
+</DemoData2>
