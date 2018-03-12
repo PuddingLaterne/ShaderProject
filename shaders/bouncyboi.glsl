@@ -430,7 +430,7 @@ void main()
 		coord.y += iResolution.y * fadeOut() * 2.0;
 	#endif
 
-	float time = iGlobalTime;		
+	float time = iGlobalTime + 2.0;		
 	vec4 color = vec4(0.0);    
 		
 	float camRotY = PI * 0.1 * sin(time * 0.5);
